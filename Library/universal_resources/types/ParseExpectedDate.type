@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<object class="kapow.robot.common.domain.Type" serializationversion="0">
+  <prologue>
+    <saved-by-versions>
+      <version>10.3.1.0</version>
+    </saved-by-versions>
+  </prologue>
+  <property name="attributes" class="kapow.robot.common.domain.Attributes">
+    <object class="kapow.robot.common.domain.Attribute" serializationversion="0">
+      <property name="name" class="String">expectedDate</property>
+      <property name="type" class="kapow.robot.plugin.common.domain.StringAttributeType" id="0"/>
+    </object>
+    <object class="kapow.robot.common.domain.Attribute" serializationversion="0">
+      <property name="name" class="String">invoiceDateOffset</property>
+      <property name="type" class="kapow.robot.plugin.common.domain.IntegerAttributeType"/>
+      <property name="comment" class="String">Allows Fido to fetch invoices from the past.
+
+For example if the value is set to 1 and the expected date is 5/1/2019 Fido will look for an invoice from April instead of May.</property>
+    </object>
+    <object class="kapow.robot.common.domain.Attribute" serializationversion="0">
+      <property name="name" class="String">monthAsNumber</property>
+      <property name="type" idref="0"/>
+      <property name="comment" class="String">The number version of the month (05) is May</property>
+    </object>
+    <object class="kapow.robot.common.domain.Attribute" serializationversion="0">
+      <property name="name" class="String">monthAsString</property>
+      <property name="type" idref="0"/>
+      <property name="comment" class="String">Month as a word or abbreviation</property>
+    </object>
+    <object class="kapow.robot.common.domain.Attribute" serializationversion="0">
+      <property name="name" class="String">year</property>
+      <property name="type" idref="0"/>
+    </object>
+  </property>
+</object>

@@ -1,0 +1,2805 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<object class="Snippet" serializationversion="0">
+  <prologue>
+    <saved-by-versions>
+      <version>10.3.1.0</version>
+      <version>11.0.0.0</version>
+    </saved-by-versions>
+    <file-type>snippet</file-type>
+    <referenced-types>
+      <type name="InputParameters"/>
+      <type name="Job"/>
+      <type name="Product"/>
+      <type name="Tenant"/>
+      <type name="CallAndResponse"/>
+      <type name="Vendor"/>
+      <type name="VendorCredential"/>
+    </referenced-types>
+    <triggers/>
+    <sub-robots/>
+    <device-mappings/>
+    <comment/>
+    <tags/>
+    <referenced-snippets>
+      <snippet name="ParseExpectedDate"/>
+      <snippet name="AccountStart"/>
+      <snippet name="EnterpriseAuthentication"/>
+      <snippet name="EHNavigationToBilling"/>
+    </referenced-snippets>
+    <typed-variables>
+      <typed-variable name="InputParameters" type-name="InputParameters"/>
+      <typed-variable name="Job" type-name="Job"/>
+      <typed-variable name="Product" type-name="Product"/>
+      <typed-variable name="Tenant" type-name="Tenant"/>
+      <typed-variable name="StartProcessingUnit" type-name="CallAndResponse"/>
+      <typed-variable name="Vendor" type-name="Vendor"/>
+      <typed-variable name="VendorCredential" type-name="VendorCredential"/>
+      <typed-variable name="PostLogs" type-name="CallAndResponse"/>
+      <typed-variable name="GetTenantId" type-name="CallAndResponse"/>
+    </typed-variables>
+    <global-variables/>
+    <parameters>
+      <parameter name="InputParameters" type-name="InputParameters"/>
+    </parameters>
+    <return-variables/>
+    <store-in-database-variables/>
+    <browser-engine>WEBKIT</browser-engine>
+  </prologue>
+  <property name="variables" class="Variables">
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">InputParameters</property>
+      <property name="parameter" class="Boolean">true</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">InputParameters</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">Job</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">Job</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">Product</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">Product</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">Tenant</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">Tenant</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">StartProcessingUnit</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0" id="0">
+          <property name="typeName" class="String">CallAndResponse</property>
+        </property>
+        <property name="assignments" class="AttributeAssignments">
+          <property name="apiUrl" class="AttributeAssignment">
+            <property name="attributeValue" class="String">enterprise/api/jobs/startProcessingUnit</property>
+            <property name="currentlyAssigned" class="Boolean">true</property>
+            <property name="lastKnownAttributeType" class="java.lang.Class" id="1">kapow.robot.plugin.common.domain.StringAttributeType</property>
+          </property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">Vendor</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">Vendor</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">VendorCredential</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">VendorCredential</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">PostLogs</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" idref="0"/>
+        <property name="assignments" class="AttributeAssignments">
+          <property name="apiUrl" class="AttributeAssignment">
+            <property name="attributeValue" class="String">enterprise/api/logs</property>
+            <property name="currentlyAssigned" class="Boolean">true</property>
+            <property name="lastKnownAttributeType" idref="1"/>
+          </property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">vendorAccountJSON</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="SimpleTypeReference" id="2">
+          <property name="simpleTypeId" class="Integer">152</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">secretQuestionJSON</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" idref="2"/>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">GetTenantId</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" idref="0"/>
+        <property name="assignments" class="AttributeAssignments">
+          <property name="apiUrl" class="AttributeAssignment">
+            <property name="attributeValue" class="String">tenants</property>
+            <property name="currentlyAssigned" class="Boolean">true</property>
+            <property name="lastKnownAttributeType" idref="1"/>
+          </property>
+        </property>
+      </property>
+    </object>
+  </property>
+  <comment class="String"/>
+  <body class="Body">
+    <blockBeginStep class="BlockBeginStep" id="3"/>
+    <steps class="ArrayList">
+      <object class="Transition" serializationversion="3" id="4">
+        <property name="name" class="String">Log - Start Robot</property>
+        <property name="stepAction" class="WriteLog2">
+          <property name="expression" class="Expression" serializationversion="1">
+            <property name="text" class="String">&gt;&gt;Starting robot at: &lt;&lt; + now()</property>
+          </property>
+        </property>
+        <property name="elementFinders" class="ElementFinders"/>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0"/>
+        <property name="comment">
+          <null/>
+        </property>
+        <property name="enabled" class="Boolean" id="5">true</property>
+        <property name="changedProperties" class="java.util.HashSet">
+          <element class="String">name</element>
+        </property>
+      </object>
+      <object class="Group" id="6">
+        <name class="String">Convert Input Parameters</name>
+        <comment>
+          <null/>
+        </comment>
+        <blockBeginStep class="BlockBeginStep" id="7"/>
+        <steps class="ArrayList">
+          <object class="Try" id="8">
+            <property name="name" class="String" id="9">Convert Fail?</property>
+          </object>
+          <object class="Transition" serializationversion="3" id="10">
+            <property name="name" class="String">Assign Variable</property>
+            <property name="stepAction" class="AssignVariable" serializationversion="4">
+              <property name="stringExpr" class="Expression" serializationversion="1">
+                <property name="text" class="String">Robot.executionId</property>
+              </property>
+              <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">Invoice.executionId</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0"/>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="Transition" serializationversion="3" id="11">
+            <property name="name" class="String">Remove XML encoding</property>
+            <property name="stepAction" class="ConvertVariables">
+              <property name="entries" class="kapow.robot.plugin.common.stateprocessor.attributeconverter.AttributeConverterEntries">
+                <object class="kapow.robot.plugin.common.stateprocessor.attributeconverter.AttributeConverterEntry" serializationversion="0">
+                  <property name="fromAttributeName" class="kapow.robot.plugin.common.support.AttributeName">
+                    <property name="name" class="String">InputParameters.InputJSON</property>
+                  </property>
+                  <property name="dataConverters" class="DataConverters">
+                    <element class="ReplaceText">
+                      <property name="textToReplace" class="String">.amp.</property>
+                      <property name="replacementText" class="String">&amp;</property>
+                    </element>
+                    <element class="ReplaceText">
+                      <property name="textToReplace" class="String">.lefkar.</property>
+                      <property name="replacementText" class="String">&lt;</property>
+                    </element>
+                    <element class="ReplaceText">
+                      <property name="textToReplace" class="String">.rigkar.</property>
+                      <property name="replacementText" class="String">&gt;</property>
+                    </element>
+                  </property>
+                  <property name="toAttributeName" class="kapow.robot.plugin.common.support.AttributeName">
+                    <property name="name" class="String">InputParameters.InputJSON</property>
+                  </property>
+                </object>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Convert Fail?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="Transition" serializationversion="3" id="12">
+            <property name="name" class="String">Open Input JSON</property>
+            <property name="stepAction" class="OpenVariable">
+              <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">InputParameters.InputJSON</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Convert Fail?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="Transition" serializationversion="3" id="13">
+            <property name="name" class="String">Assign enterpriseApiUrl Variable</property>
+            <property name="stepAction" class="AssignVariable" serializationversion="4">
+              <property name="stringExpr" class="kapow.robot.plugin.common.support.expression.multipletype.ComplexVariableAllowedVariableExpression" serializationversion="2">
+                <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                  <property name="name" class="String">InputParameters.enterpriseApiUrl</property>
+                </property>
+              </property>
+              <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">enterpriseApiUrl</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Convert Fail?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="Transition" serializationversion="3" id="14">
+            <property name="name" class="String">Extract Requestor Id</property>
+            <property name="stepAction" class="ExtractJSON2">
+              <property name="dataConverters" class="DataConverters">
+                <element class="ExtractNumber"/>
+              </property>
+              <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">processedEntity.requestor_id</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">@top:.requestorId</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Convert Fail?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="Group" id="15">
+            <name class="String">Job Run</name>
+            <comment>
+              <null/>
+            </comment>
+            <blockBeginStep class="BlockBeginStep" id="16"/>
+            <steps class="ArrayList">
+              <object class="Transition" serializationversion="3" id="17">
+                <property name="name" class="String">Extract Id</property>
+                <property name="stepAction" class="ExtractJSON2">
+                  <property name="dataConverters" class="DataConverters">
+                    <element class="ExtractNumber"/>
+                  </property>
+                  <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                    <property name="name" class="String">Job.id</property>
+                  </property>
+                </property>
+                <property name="elementFinders" class="ElementFinders">
+                  <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                    <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                      <property name="value" class="String">@top:.job.id</property>
+                    </property>
+                  </object>
+                </property>
+                <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+                  <property name="changedProperties" class="java.util.HashSet">
+                    <element class="String">reportingViaLog</element>
+                  </property>
+                  <property name="reportingViaAPI" class="Boolean">false</property>
+                  <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                    <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                      <property name="name" class="String">Convert Fail?</property>
+                    </property>
+                  </property>
+                </property>
+                <property name="comment">
+                  <null/>
+                </property>
+                <property name="enabled" idref="5"/>
+                <property name="changedProperties" class="java.util.HashSet"/>
+              </object>
+              <object class="Transition" serializationversion="3" id="18">
+                <property name="name" class="String">Extract Job Run Id</property>
+                <property name="stepAction" class="ExtractJSON2">
+                  <property name="dataConverters" class="DataConverters">
+                    <element class="ExtractNumber"/>
+                  </property>
+                  <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                    <property name="name" class="String">JobRun.id</property>
+                  </property>
+                </property>
+                <property name="elementFinders" class="ElementFinders">
+                  <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                    <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                      <property name="value" class="String">@top:.jobRun.id</property>
+                    </property>
+                  </object>
+                </property>
+                <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+                  <property name="changedProperties" class="java.util.HashSet">
+                    <element class="String">reportingViaLog</element>
+                  </property>
+                  <property name="reportingViaAPI" class="Boolean">false</property>
+                  <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                    <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                      <property name="name" class="String">Convert Fail?</property>
+                    </property>
+                  </property>
+                </property>
+                <property name="comment">
+                  <null/>
+                </property>
+                <property name="enabled" idref="5"/>
+                <property name="changedProperties" class="java.util.HashSet">
+                  <element class="String">name</element>
+                </property>
+              </object>
+              <object class="Transition" serializationversion="3" id="19">
+                <property name="name" class="String">Log - Job Run Id</property>
+                <property name="stepAction" class="WriteLog2">
+                  <property name="expression" class="Expression" serializationversion="1">
+                    <property name="text" class="String">&gt;&gt;JobRun Id : &lt;&lt; +JobRun.id</property>
+                  </property>
+                </property>
+                <property name="elementFinders" class="ElementFinders"/>
+                <property name="errorHandler" class="ErrorHandler" serializationversion="0"/>
+                <property name="comment">
+                  <null/>
+                </property>
+                <property name="enabled" idref="5"/>
+                <property name="changedProperties" class="java.util.HashSet">
+                  <element class="String">name</element>
+                </property>
+              </object>
+            </steps>
+            <blockEndStep class="BlockEndStep" id="20"/>
+            <edges class="ArrayList">
+              <object class="TransitionEdge">
+                <from idref="16"/>
+                <to idref="17"/>
+              </object>
+              <object class="TransitionEdge">
+                <from idref="17"/>
+                <to idref="18"/>
+              </object>
+              <object class="TransitionEdge">
+                <from idref="18"/>
+                <to idref="19"/>
+              </object>
+              <object class="TransitionEdge">
+                <from idref="19"/>
+                <to idref="20"/>
+              </object>
+            </edges>
+          </object>
+          <object class="Group" id="21">
+            <name class="String">ProcessingUnit</name>
+            <comment>
+              <null/>
+            </comment>
+            <blockBeginStep class="BlockBeginStep" id="22"/>
+            <steps class="ArrayList">
+              <object class="Transition" serializationversion="3" id="23">
+                <property name="name" class="String">Extract Processing Unit Id</property>
+                <property name="stepAction" class="ExtractJSON2">
+                  <property name="dataConverters" class="DataConverters">
+                    <element class="ExtractNumber"/>
+                  </property>
+                  <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                    <property name="name" class="String">ProcessingUnit.id</property>
+                  </property>
+                </property>
+                <property name="elementFinders" class="ElementFinders">
+                  <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                    <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                      <property name="value" class="String">@top:.processingUnitId</property>
+                    </property>
+                  </object>
+                </property>
+                <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+                  <property name="changedProperties" class="java.util.HashSet">
+                    <element class="String">reportingViaLog</element>
+                  </property>
+                  <property name="reportingViaAPI" class="Boolean">false</property>
+                  <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                    <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                      <property name="name" class="String">Convert Fail?</property>
+                    </property>
+                  </property>
+                </property>
+                <property name="comment">
+                  <null/>
+                </property>
+                <property name="enabled" idref="5"/>
+                <property name="changedProperties" class="java.util.HashSet">
+                  <element class="String">name</element>
+                </property>
+              </object>
+            </steps>
+            <blockEndStep class="BlockEndStep" id="24"/>
+            <edges class="ArrayList">
+              <object class="TransitionEdge">
+                <from idref="22"/>
+                <to idref="23"/>
+              </object>
+              <object class="TransitionEdge">
+                <from idref="23"/>
+                <to idref="24"/>
+              </object>
+            </edges>
+          </object>
+          <object class="SnippetStep" id="25">
+            <name>
+              <null/>
+            </name>
+            <snippetName class="String">EnterpriseAuthentication</snippetName>
+            <snippetStepComment>
+              <null/>
+            </snippetStepComment>
+          </object>
+          <object class="Transition" serializationversion="3" id="26">
+            <property name="name" class="String">Set Current Window</property>
+            <property name="stepAction" class="SetCurrentWindow" serializationversion="1">
+              <property name="windowReferenceProvider" class="kapow.robot.plugin.common.stepaction.windowreferenceprovider.NamedWindowReferenceProvider">
+                <property name="windowReference" class="kapow.robot.robomaker.state.window.reference.IdBasedWindowReference" serializationversion="0">
+                  <property name="windowId" class="kapow.robot.robomaker.state.VariableDataModelId">
+                    <property name="id" class="String">InputParameters.InputJSON</property>
+                  </property>
+                </property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Convert Fail?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="Group" id="27">
+            <name class="String">Product</name>
+            <comment>
+              <null/>
+            </comment>
+            <blockBeginStep class="BlockBeginStep" id="28"/>
+            <steps class="ArrayList">
+              <object class="Transition" serializationversion="3" id="29">
+                <property name="name" class="String" id="30">Set Named JSON</property>
+                <property name="stepAction" class="SetNamedJSON"/>
+                <property name="elementFinders" class="ElementFinders">
+                  <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                    <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                      <property name="value" class="String">@top:.workload</property>
+                    </property>
+                  </object>
+                </property>
+                <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+                  <property name="changedProperties" class="java.util.HashSet">
+                    <element class="String">reportingViaAPI</element>
+                    <element class="String">reportingViaLog</element>
+                  </property>
+                  <property name="reportingViaAPI" class="Boolean">false</property>
+                  <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                    <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                      <property name="name" idref="9"/>
+                    </property>
+                  </property>
+                </property>
+                <property name="comment">
+                  <null/>
+                </property>
+                <property name="enabled" idref="5"/>
+                <property name="changedProperties" class="java.util.HashSet"/>
+              </object>
+              <object class="Transition" serializationversion="3" id="31">
+                <property name="name" class="String">Extract Identifier</property>
+                <property name="stepAction" class="ExtractJSON2">
+                  <property name="dataConverters" class="DataConverters">
+                    <element class="UnquoteText"/>
+                  </property>
+                  <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                    <property name="name" class="String">Product.identifier</property>
+                  </property>
+                </property>
+                <property name="elementFinders" class="ElementFinders">
+                  <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                    <property name="tagRelation" class="InJSONRelation">
+                      <property name="tagName" class="ElementName">
+                        <property name="name" class="String">1</property>
+                      </property>
+                    </property>
+                    <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                      <property name="value" class="String">.product.identifier</property>
+                    </property>
+                  </object>
+                </property>
+                <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+                  <property name="reportingViaAPI" class="Boolean">false</property>
+                  <property name="reportingViaLog" class="Boolean">false</property>
+                  <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                    <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                      <property name="name" class="String">Convert Fail?</property>
+                    </property>
+                  </property>
+                </property>
+                <property name="comment">
+                  <null/>
+                </property>
+                <property name="enabled" idref="5"/>
+                <property name="changedProperties" class="java.util.HashSet"/>
+              </object>
+            </steps>
+            <blockEndStep class="BlockEndStep" id="32"/>
+            <edges class="ArrayList">
+              <object class="TransitionEdge">
+                <from idref="28"/>
+                <to idref="29"/>
+              </object>
+              <object class="TransitionEdge">
+                <from idref="29"/>
+                <to idref="31"/>
+              </object>
+              <object class="TransitionEdge">
+                <from idref="31"/>
+                <to idref="32"/>
+              </object>
+            </edges>
+          </object>
+          <object class="Group" id="33">
+            <name class="String">Tenant</name>
+            <comment>
+              <null/>
+            </comment>
+            <blockBeginStep class="BlockBeginStep" id="34"/>
+            <steps class="ArrayList">
+              <object class="Transition" serializationversion="3" id="35">
+                <property name="name" class="String">Extract Id</property>
+                <property name="stepAction" class="ExtractJSON2">
+                  <property name="dataConverters" class="DataConverters">
+                    <element class="ExtractNumber"/>
+                  </property>
+                  <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                    <property name="name" class="String">Tenant.id</property>
+                  </property>
+                </property>
+                <property name="elementFinders" class="ElementFinders">
+                  <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                    <property name="tagRelation" class="InJSONRelation">
+                      <property name="tagName" class="ElementName">
+                        <property name="name" class="String">1</property>
+                      </property>
+                    </property>
+                    <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                      <property name="value" class="String">.tenant.id</property>
+                    </property>
+                  </object>
+                </property>
+                <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+                  <property name="changedProperties" class="java.util.HashSet">
+                    <element class="String">reportingViaLog</element>
+                  </property>
+                  <property name="reportingViaAPI" class="Boolean">false</property>
+                  <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                    <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                      <property name="name" idref="9"/>
+                    </property>
+                  </property>
+                </property>
+                <property name="comment">
+                  <null/>
+                </property>
+                <property name="enabled" idref="5"/>
+                <property name="changedProperties" class="java.util.HashSet"/>
+              </object>
+              <object class="Transition" serializationversion="3" id="36">
+                <property name="name" class="String">Extract Tenant Short Name</property>
+                <property name="stepAction" class="ExtractJSON2">
+                  <property name="dataConverters" class="DataConverters">
+                    <element class="UnquoteText"/>
+                  </property>
+                  <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                    <property name="name" class="String">Tenant.shortName</property>
+                  </property>
+                </property>
+                <property name="elementFinders" class="ElementFinders">
+                  <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                    <property name="tagRelation" class="InJSONRelation">
+                      <property name="tagName" class="ElementName">
+                        <property name="name" class="String">1</property>
+                      </property>
+                    </property>
+                    <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                      <property name="value" class="String">.tenant.shortName</property>
+                    </property>
+                  </object>
+                </property>
+                <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+                  <property name="changedProperties" class="java.util.HashSet">
+                    <element class="String">reportingViaLog</element>
+                  </property>
+                  <property name="reportingViaAPI" class="Boolean">false</property>
+                  <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                    <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                      <property name="name" class="String">Convert Fail?</property>
+                    </property>
+                  </property>
+                </property>
+                <property name="comment">
+                  <null/>
+                </property>
+                <property name="enabled" idref="5"/>
+                <property name="changedProperties" class="java.util.HashSet">
+                  <element class="String">name</element>
+                </property>
+              </object>
+            </steps>
+            <blockEndStep class="BlockEndStep" id="37"/>
+            <edges class="ArrayList">
+              <object class="TransitionEdge">
+                <from idref="34"/>
+                <to idref="35"/>
+              </object>
+              <object class="TransitionEdge">
+                <from idref="35"/>
+                <to idref="36"/>
+              </object>
+              <object class="TransitionEdge">
+                <from idref="36"/>
+                <to idref="37"/>
+              </object>
+            </edges>
+          </object>
+          <object class="Group" id="38">
+            <name class="String">Vendor</name>
+            <comment>
+              <null/>
+            </comment>
+            <blockBeginStep class="BlockBeginStep" id="39"/>
+            <steps class="ArrayList">
+              <object class="Transition" serializationversion="3" id="40">
+                <property name="name" class="String">Extract Vendor Name</property>
+                <property name="stepAction" class="ExtractJSON2">
+                  <property name="dataConverters" class="DataConverters">
+                    <element class="UnquoteText"/>
+                  </property>
+                  <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                    <property name="name" class="String">Vendor.name</property>
+                  </property>
+                </property>
+                <property name="elementFinders" class="ElementFinders">
+                  <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                    <property name="tagRelation" class="InJSONRelation">
+                      <property name="tagName" class="ElementName">
+                        <property name="name" class="String">1</property>
+                      </property>
+                    </property>
+                    <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                      <property name="value" class="String">.vendor.name</property>
+                    </property>
+                  </object>
+                </property>
+                <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+                  <property name="changedProperties" class="java.util.HashSet">
+                    <element class="String">reportingViaLog</element>
+                  </property>
+                  <property name="reportingViaAPI" class="Boolean">false</property>
+                  <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                    <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                      <property name="name" class="String">Convert Fail?</property>
+                    </property>
+                  </property>
+                </property>
+                <property name="comment">
+                  <null/>
+                </property>
+                <property name="enabled" idref="5"/>
+                <property name="changedProperties" class="java.util.HashSet">
+                  <element class="String">name</element>
+                </property>
+              </object>
+              <object class="Transition" serializationversion="3" id="41">
+                <property name="name" class="String">Extract Vendor Id</property>
+                <property name="stepAction" class="ExtractJSON2">
+                  <property name="dataConverters" class="DataConverters">
+                    <element class="UnquoteText"/>
+                  </property>
+                  <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                    <property name="name" class="String">Vendor.id</property>
+                  </property>
+                </property>
+                <property name="elementFinders" class="ElementFinders">
+                  <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                    <property name="tagRelation" class="InJSONRelation">
+                      <property name="tagName" class="ElementName">
+                        <property name="name" class="String">1</property>
+                      </property>
+                    </property>
+                    <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                      <property name="value" class="String">.vendor.id</property>
+                    </property>
+                  </object>
+                </property>
+                <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+                  <property name="changedProperties" class="java.util.HashSet">
+                    <element class="String">reportingViaLog</element>
+                  </property>
+                  <property name="reportingViaAPI" class="Boolean">false</property>
+                  <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                    <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                      <property name="name" class="String">Convert Fail?</property>
+                    </property>
+                  </property>
+                </property>
+                <property name="comment">
+                  <null/>
+                </property>
+                <property name="enabled" idref="5"/>
+                <property name="changedProperties" class="java.util.HashSet">
+                  <element class="String">name</element>
+                </property>
+              </object>
+            </steps>
+            <blockEndStep class="BlockEndStep" id="42"/>
+            <edges class="ArrayList">
+              <object class="TransitionEdge">
+                <from idref="39"/>
+                <to idref="40"/>
+              </object>
+              <object class="TransitionEdge">
+                <from idref="40"/>
+                <to idref="41"/>
+              </object>
+              <object class="TransitionEdge">
+                <from idref="41"/>
+                <to idref="42"/>
+              </object>
+            </edges>
+          </object>
+          <object class="Group" id="43">
+            <name class="String">VendorCredential</name>
+            <comment>
+              <null/>
+            </comment>
+            <blockBeginStep class="BlockBeginStep" id="44"/>
+            <steps class="ArrayList">
+              <object class="Transition" serializationversion="3" id="45">
+                <property name="name" idref="30"/>
+                <property name="stepAction" class="SetNamedJSON">
+                  <property name="tagName" class="DesiredElementName">
+                    <property name="name" class="String" id="46">tenantVendorCredential</property>
+                  </property>
+                </property>
+                <property name="elementFinders" class="ElementFinders">
+                  <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                    <property name="tagRelation" class="InJSONRelation">
+                      <property name="tagName" class="ElementName">
+                        <property name="name" class="String">1</property>
+                      </property>
+                    </property>
+                    <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                      <property name="value" class="String">.tenantVendorCredential</property>
+                    </property>
+                  </object>
+                </property>
+                <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+                  <property name="reportingViaAPI" class="Boolean">false</property>
+                  <property name="reportingViaLog" class="Boolean">false</property>
+                  <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                    <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                      <property name="name" idref="9"/>
+                    </property>
+                  </property>
+                </property>
+                <property name="comment">
+                  <null/>
+                </property>
+                <property name="enabled" idref="5"/>
+                <property name="changedProperties" class="java.util.HashSet"/>
+              </object>
+              <object class="Transition" serializationversion="3" id="47">
+                <property name="name" class="String">Extract Id</property>
+                <property name="stepAction" class="ExtractJSON2">
+                  <property name="dataConverters" class="DataConverters">
+                    <element class="ExtractNumber"/>
+                  </property>
+                  <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                    <property name="name" class="String">VendorCredential.id</property>
+                  </property>
+                </property>
+                <property name="elementFinders" class="ElementFinders">
+                  <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                    <property name="tagRelation" class="InJSONRelation">
+                      <property name="tagName" class="ElementName">
+                        <property name="name" idref="46"/>
+                      </property>
+                    </property>
+                    <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                      <property name="value" class="String">.id</property>
+                    </property>
+                  </object>
+                </property>
+                <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+                  <property name="changedProperties" class="java.util.HashSet">
+                    <element class="String">reportingViaLog</element>
+                  </property>
+                  <property name="reportingViaAPI" class="Boolean">false</property>
+                  <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                    <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                      <property name="name" class="String">Convert Fail?</property>
+                    </property>
+                  </property>
+                </property>
+                <property name="comment">
+                  <null/>
+                </property>
+                <property name="enabled" idref="5"/>
+                <property name="changedProperties" class="java.util.HashSet"/>
+              </object>
+              <object class="Transition" serializationversion="3" id="48">
+                <property name="name" class="String">Extract Access URL</property>
+                <property name="stepAction" class="ExtractJSON2">
+                  <property name="dataConverters" class="DataConverters">
+                    <element class="UnquoteText"/>
+                  </property>
+                  <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                    <property name="name" class="String">VendorCredential.accessUrl</property>
+                  </property>
+                </property>
+                <property name="elementFinders" class="ElementFinders">
+                  <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                    <property name="tagRelation" class="InJSONRelation">
+                      <property name="tagName" class="ElementName">
+                        <property name="name" idref="46"/>
+                      </property>
+                    </property>
+                    <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                      <property name="value" class="String">.accessUrl</property>
+                    </property>
+                  </object>
+                </property>
+                <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+                  <property name="changedProperties" class="java.util.HashSet">
+                    <element class="String">reportingViaLog</element>
+                  </property>
+                  <property name="reportingViaAPI" class="Boolean">false</property>
+                  <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                    <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                      <property name="name" class="String">Convert Fail?</property>
+                    </property>
+                  </property>
+                </property>
+                <property name="comment">
+                  <null/>
+                </property>
+                <property name="enabled" idref="5"/>
+                <property name="changedProperties" class="java.util.HashSet"/>
+              </object>
+              <object class="Transition" serializationversion="3" id="49">
+                <property name="name" class="String">Extract Username</property>
+                <property name="stepAction" class="ExtractJSON2">
+                  <property name="dataConverters" class="DataConverters">
+                    <element class="UnquoteText"/>
+                  </property>
+                  <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                    <property name="name" class="String">VendorCredential.username</property>
+                  </property>
+                </property>
+                <property name="elementFinders" class="ElementFinders">
+                  <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                    <property name="tagRelation" class="InJSONRelation">
+                      <property name="tagName" class="ElementName">
+                        <property name="name" idref="46"/>
+                      </property>
+                    </property>
+                    <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                      <property name="value" class="String">.userName</property>
+                    </property>
+                  </object>
+                </property>
+                <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+                  <property name="changedProperties" class="java.util.HashSet">
+                    <element class="String">reportingViaLog</element>
+                  </property>
+                  <property name="reportingViaAPI" class="Boolean">false</property>
+                  <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                    <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                      <property name="name" class="String">Convert Fail?</property>
+                    </property>
+                  </property>
+                </property>
+                <property name="comment">
+                  <null/>
+                </property>
+                <property name="enabled" idref="5"/>
+                <property name="changedProperties" class="java.util.HashSet"/>
+              </object>
+              <object class="Transition" serializationversion="3" id="50">
+                <property name="name" class="String">Extract Password</property>
+                <property name="stepAction" class="ExtractJSON2">
+                  <property name="dataConverters" class="DataConverters">
+                    <element class="UnquoteText"/>
+                  </property>
+                  <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                    <property name="name" class="String">VendorCredential.password</property>
+                  </property>
+                </property>
+                <property name="elementFinders" class="ElementFinders">
+                  <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                    <property name="tagRelation" class="InJSONRelation">
+                      <property name="tagName" class="ElementName">
+                        <property name="name" idref="46"/>
+                      </property>
+                    </property>
+                    <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                      <property name="value" class="String">.password</property>
+                    </property>
+                  </object>
+                </property>
+                <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+                  <property name="changedProperties" class="java.util.HashSet">
+                    <element class="String">reportingViaLog</element>
+                  </property>
+                  <property name="reportingViaAPI" class="Boolean">false</property>
+                  <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                    <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                      <property name="name" class="String">Convert Fail?</property>
+                    </property>
+                  </property>
+                </property>
+                <property name="comment">
+                  <null/>
+                </property>
+                <property name="enabled" idref="5"/>
+                <property name="changedProperties" class="java.util.HashSet"/>
+              </object>
+              <object class="Transition" serializationversion="3" id="51">
+                <property name="name" class="String">Extract Secret Question JSON</property>
+                <property name="stepAction" class="ExtractJSON2">
+                  <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                    <property name="name" class="String">secretQuestionJSON</property>
+                  </property>
+                </property>
+                <property name="elementFinders" class="ElementFinders">
+                  <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                    <property name="tagRelation" class="InJSONRelation">
+                      <property name="tagName" class="ElementName">
+                        <property name="name" idref="46"/>
+                      </property>
+                    </property>
+                    <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                      <property name="value" class="String">.sqsa</property>
+                    </property>
+                  </object>
+                </property>
+                <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+                  <property name="changedProperties" class="java.util.HashSet">
+                    <element class="String">reportingViaLog</element>
+                  </property>
+                  <property name="reportingViaAPI" class="Boolean">false</property>
+                  <property name="reportingViaLog" class="Boolean">false</property>
+                  <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$IgnoreAndContinue"/>
+                </property>
+                <property name="comment">
+                  <null/>
+                </property>
+                <property name="enabled" idref="5"/>
+                <property name="changedProperties" class="java.util.HashSet"/>
+              </object>
+              <object class="Transition" serializationversion="3" id="52">
+                <property name="name" class="String">Extract Vendor Account JSON</property>
+                <property name="stepAction" class="ExtractJSON2">
+                  <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                    <property name="name" class="String">vendorAccountJSON</property>
+                  </property>
+                </property>
+                <property name="elementFinders" class="ElementFinders">
+                  <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                    <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                      <property name="value" class="String">@top:.workload.recurringInvoices</property>
+                    </property>
+                  </object>
+                </property>
+                <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+                  <property name="changedProperties" class="java.util.HashSet">
+                    <element class="String">reportingViaLog</element>
+                  </property>
+                  <property name="reportingViaAPI" class="Boolean">false</property>
+                  <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                    <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                      <property name="name" class="String">Convert Fail?</property>
+                    </property>
+                  </property>
+                </property>
+                <property name="comment">
+                  <null/>
+                </property>
+                <property name="enabled" idref="5"/>
+                <property name="changedProperties" class="java.util.HashSet"/>
+              </object>
+              <object class="Transition" serializationversion="3" id="53">
+                <property name="name" class="String" id="54">Close Window</property>
+                <property name="stepAction" class="CloseWindow">
+                  <property name="browserConfigurationSpecification" class="BrowserConfigurationSpecificationWebKit" serializationversion="26">
+                    <property name="SSLUsage" class="com.kapowtech.net.ssl.SSLUsage" id="55">
+                      <property name="enum-name" class="String">TLS10_TLSHello</property>
+                    </property>
+                    <property name="ancestorProvider" class="BrowserConfigurationSpecificationAncestorProviderForStep"/>
+                  </property>
+                </property>
+                <property name="elementFinders" class="ElementFinders"/>
+                <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+                  <property name="changedProperties" class="java.util.HashSet">
+                    <element class="String">reportingViaAPI</element>
+                    <element class="String">reportingViaLog</element>
+                  </property>
+                  <property name="reportingViaAPI" class="Boolean">false</property>
+                  <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                    <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                      <property name="name" class="String">Convert Fail?</property>
+                    </property>
+                  </property>
+                </property>
+                <property name="comment">
+                  <null/>
+                </property>
+                <property name="enabled" idref="5"/>
+                <property name="changedProperties" class="java.util.HashSet"/>
+              </object>
+            </steps>
+            <blockEndStep class="BlockEndStep" id="56"/>
+            <edges class="ArrayList">
+              <object class="TransitionEdge">
+                <from idref="44"/>
+                <to idref="45"/>
+              </object>
+              <object class="TransitionEdge">
+                <from idref="45"/>
+                <to idref="47"/>
+              </object>
+              <object class="TransitionEdge">
+                <from idref="47"/>
+                <to idref="48"/>
+              </object>
+              <object class="TransitionEdge">
+                <from idref="48"/>
+                <to idref="49"/>
+              </object>
+              <object class="TransitionEdge">
+                <from idref="49"/>
+                <to idref="50"/>
+              </object>
+              <object class="TransitionEdge">
+                <from idref="50"/>
+                <to idref="51"/>
+              </object>
+              <object class="TransitionEdge">
+                <from idref="51"/>
+                <to idref="52"/>
+              </object>
+              <object class="TransitionEdge">
+                <from idref="52"/>
+                <to idref="53"/>
+              </object>
+              <object class="TransitionEdge">
+                <from idref="53"/>
+                <to idref="56"/>
+              </object>
+            </edges>
+          </object>
+          <object class="Group" id="57">
+            <name class="String">Assign Reporting apiUrl's</name>
+            <comment>
+              <null/>
+            </comment>
+            <blockBeginStep class="BlockBeginStep" id="58"/>
+            <steps class="ArrayList">
+              <object class="Transition" serializationversion="3" id="59">
+                <property name="name" class="String">Assign PostLogEntry Url</property>
+                <property name="stepAction" class="AssignVariable" serializationversion="4">
+                  <property name="stringExpr" class="Expression" serializationversion="1">
+                    <property name="text" class="String">enterpriseApiUrl + PostLogs.apiUrl</property>
+                  </property>
+                  <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                    <property name="name" class="String">PostLogs.apiUrl</property>
+                  </property>
+                </property>
+                <property name="elementFinders" class="ElementFinders"/>
+                <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+                  <property name="changedProperties" class="java.util.HashSet">
+                    <element class="String">reportingViaAPI</element>
+                    <element class="String">reportingViaLog</element>
+                  </property>
+                  <property name="reportingViaAPI" class="Boolean">false</property>
+                  <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                    <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                      <property name="name" class="String">Convert Fail?</property>
+                    </property>
+                  </property>
+                </property>
+                <property name="comment" class="String">Assigned at the start so that the api target information is duplicated during a robot execution.</property>
+                <property name="enabled" idref="5"/>
+                <property name="changedProperties" class="java.util.HashSet">
+                  <element class="String">name</element>
+                </property>
+              </object>
+            </steps>
+            <blockEndStep class="BlockEndStep" id="60"/>
+            <edges class="ArrayList">
+              <object class="TransitionEdge">
+                <from idref="58"/>
+                <to idref="59"/>
+              </object>
+              <object class="TransitionEdge">
+                <from idref="59"/>
+                <to idref="60"/>
+              </object>
+            </edges>
+          </object>
+          <object class="Transition" serializationversion="3" id="61">
+            <property name="name" class="String">Log - Input Conversion Failed</property>
+            <property name="stepAction" class="WriteLog2">
+              <property name="expression" class="Expression" serializationversion="1">
+                <property name="text" class="String">&gt;&gt;Input conversion was unsuccessful, data could be in an incorrect format&lt;&lt;</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0"/>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="End" id="62"/>
+        </steps>
+        <blockEndStep class="BlockEndStep" id="63"/>
+        <edges class="ArrayList">
+          <object class="TransitionEdge">
+            <from idref="7"/>
+            <to idref="8"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="8"/>
+            <to idref="10"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="8"/>
+            <to idref="61"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="10"/>
+            <to idref="11"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="11"/>
+            <to idref="12"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="12"/>
+            <to idref="13"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="13"/>
+            <to idref="14"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="14"/>
+            <to idref="15"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="15"/>
+            <to idref="21"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="21"/>
+            <to idref="25"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="25"/>
+            <to idref="26"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="26"/>
+            <to idref="27"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="27"/>
+            <to idref="33"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="33"/>
+            <to idref="38"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="38"/>
+            <to idref="43"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="43"/>
+            <to idref="57"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="57"/>
+            <to idref="63"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="61"/>
+            <to idref="62"/>
+          </object>
+        </edges>
+      </object>
+      <object class="BranchPoint" id="64"/>
+      <object class="Group" id="65">
+        <name class="String">Extract Account Number Data</name>
+        <comment class="String">
+</comment>
+        <blockBeginStep class="BlockBeginStep" id="66"/>
+        <steps class="ArrayList">
+          <object class="Try" id="67">
+            <property name="name" class="String" id="68">Get Vendor Accounts Failed?</property>
+          </object>
+          <object class="Transition" serializationversion="3" id="69">
+            <property name="name" class="String">Open Vendor Account JSON</property>
+            <property name="stepAction" class="OpenVariable">
+              <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">vendorAccountJSON</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Get Vendor Accounts Failed?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="Transition" serializationversion="3" id="70">
+            <property name="name" class="String">For Each Account</property>
+            <property name="stepAction" class="ForEachItem">
+              <property name="tagName" class="DesiredElementName">
+                <property name="name" class="String" id="71">Account</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">@top:</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0"/>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="Transition" serializationversion="3" id="72">
+            <property name="name" class="String">Extract Recurring Invoice Id</property>
+            <property name="stepAction" class="ExtractJSON2">
+              <property name="dataConverters" class="DataConverters">
+                <element class="ExtractNumber"/>
+              </property>
+              <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">RecurringInvoice.id</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                <property name="tagRelation" class="InJSONRelation">
+                  <property name="tagName" class="ElementName">
+                    <property name="name" idref="71"/>
+                  </property>
+                </property>
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">.id</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Get Vendor Accounts Failed?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" class="Boolean" id="73">false</property>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="Transition" serializationversion="3" id="74">
+            <property name="name" class="String">Extract Account  Id</property>
+            <property name="stepAction" class="ExtractJSON2">
+              <property name="dataConverters" class="DataConverters">
+                <element class="ExtractNumber"/>
+              </property>
+              <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">Account.id</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                <property name="tagRelation" class="InJSONRelation">
+                  <property name="tagName" class="ElementName">
+                    <property name="name" idref="71"/>
+                  </property>
+                </property>
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">.account.id</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Get Vendor Accounts Failed?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="Transition" serializationversion="3" id="75">
+            <property name="name" class="String">Extract Account Number</property>
+            <property name="stepAction" class="ExtractJSON2">
+              <property name="dataConverters" class="DataConverters">
+                <element class="UnquoteText"/>
+              </property>
+              <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">Account.accountNumber</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                <property name="tagRelation" class="InJSONRelation">
+                  <property name="tagName" class="ElementName">
+                    <property name="name" idref="71"/>
+                  </property>
+                </property>
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">.account.accountNumber</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Get Vendor Accounts Failed?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="Transition" serializationversion="3" id="76">
+            <property name="name" class="String">Extract Company Id</property>
+            <property name="stepAction" class="ExtractJSON2">
+              <property name="dataConverters" class="DataConverters">
+                <element class="UnquoteText"/>
+              </property>
+              <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">VendorCredentialAccount.companyId</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                <property name="tagRelation" class="InJSONRelation">
+                  <property name="tagName" class="ElementName">
+                    <property name="name" idref="71"/>
+                  </property>
+                </property>
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">.vendorAccountKey</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="reportingViaLog" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$IgnoreAndContinue"/>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="Transition" serializationversion="3" id="77">
+            <property name="name" class="String">Extract Vendor Account Key</property>
+            <property name="stepAction" class="ExtractJSON2">
+              <property name="dataConverters" class="DataConverters">
+                <element class="UnquoteText"/>
+              </property>
+              <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">RecurringInvoice.vendorAccountKey</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                <property name="tagRelation" class="InJSONRelation">
+                  <property name="tagName" class="ElementName">
+                    <property name="name" idref="71"/>
+                  </property>
+                </property>
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">.vendorAccountKey</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="reportingViaLog" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$IgnoreAndContinue"/>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="73"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="Try" id="78">
+            <property name="name" class="String" id="79">No VAN?</property>
+            <property name="comment" class="String">PDF -&gt; EDI weirdness</property>
+          </object>
+          <object class="Transition" serializationversion="3" id="80">
+            <property name="name" class="String">Extract Portal Account Number</property>
+            <property name="stepAction" class="ExtractJSON2">
+              <property name="dataConverters" class="DataConverters">
+                <element class="UnquoteText"/>
+              </property>
+              <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">VendorCredentialAccount.portalAccountNumber</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                <property name="tagRelation" class="InJSONRelation">
+                  <property name="tagName" class="ElementName">
+                    <property name="name" idref="71"/>
+                  </property>
+                </property>
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">.account.vendorAccountNumber</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" idref="79"/>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="Transition" serializationversion="3" id="81">
+            <property name="name" class="String">Extract Process Identifier</property>
+            <property name="stepAction" class="ExtractJSON2">
+              <property name="dataConverters" class="DataConverters">
+                <element class="UnquoteText"/>
+              </property>
+              <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">VendorCredentialAccount.processIdentifier</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                <property name="tagRelation" class="InJSONRelation">
+                  <property name="tagName" class="ElementName">
+                    <property name="name" idref="71"/>
+                  </property>
+                </property>
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">.processIdentifier</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Get Vendor Accounts Failed?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="Transition" serializationversion="3" id="82">
+            <property name="name" class="String">For Each Invoice</property>
+            <property name="stepAction" class="ForEachItem"/>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">@top:[0].invoices</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="reportingViaLog" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" idref="68"/>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="Transition" serializationversion="3" id="83">
+            <property name="name" class="String">Extract Expected Date</property>
+            <property name="stepAction" class="ExtractJSON2">
+              <property name="dataConverters" class="DataConverters">
+                <element class="UnquoteText"/>
+                <element class="ExtractDate">
+                  <property name="formats" class="BeanList">
+                    <object class="kapow.robot.plugin.common.stringprocessor.datefetcher.PatternBasedDateFormatSpecification">
+                      <property name="pattern" class="kapow.robot.plugin.common.support.expression.stringexpr.DateExtractorPatternValueStringExpression">
+                        <property name="value" class="String">yyyy-MM-dd</property>
+                      </property>
+                    </object>
+                  </property>
+                </element>
+              </property>
+              <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">VendorCredentialAccount.expectedDate</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                <property name="tagRelation" class="InJSONRelation">
+                  <property name="tagName" class="ElementName">
+                    <property name="name" class="String">1</property>
+                  </property>
+                </property>
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">.invoiceDate</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Get Vendor Accounts Failed?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment" class="String">Configured to extract the invoice date as fido is no longer responsible for the span logic in the robot itself.</property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="Transition" serializationversion="3" id="84">
+            <property name="name" class="String">Extract Invoice Date</property>
+            <property name="stepAction" class="ExtractJSON2">
+              <property name="dataConverters" class="DataConverters">
+                <element class="UnquoteText"/>
+              </property>
+              <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">Invoice.invoiceDate</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                <property name="tagRelation" class="InJSONRelation">
+                  <property name="tagName" class="ElementName">
+                    <property name="name" class="String">1</property>
+                  </property>
+                </property>
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">.invoiceDate</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Get Vendor Accounts Failed?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="Transition" serializationversion="3" id="85">
+            <property name="name" class="String">Extract Expected Receive Date </property>
+            <property name="stepAction" class="ExtractJSON2">
+              <property name="dataConverters" class="DataConverters">
+                <element class="UnquoteText"/>
+              </property>
+              <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">Invoice.expectedReceiveDate</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                <property name="tagRelation" class="InJSONRelation">
+                  <property name="tagName" class="ElementName">
+                    <property name="name" class="String">1</property>
+                  </property>
+                </property>
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">.expectedReceiveDate</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Get Vendor Accounts Failed?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="Transition" serializationversion="3" id="86">
+            <property name="name" class="String">Extract Invoice Period </property>
+            <property name="stepAction" class="ExtractJSON2">
+              <property name="dataConverters" class="DataConverters">
+                <element class="UnquoteText"/>
+              </property>
+              <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">Invoice.invoicePeriod</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                <property name="tagRelation" class="InJSONRelation">
+                  <property name="tagName" class="ElementName">
+                    <property name="name" class="String">1</property>
+                  </property>
+                </property>
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">.invoicePeriod</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Get Vendor Accounts Failed?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="Transition" serializationversion="3" id="87">
+            <property name="name" class="String">Extract Company Id</property>
+            <property name="stepAction" class="ExtractJSON2">
+              <property name="dataConverters" class="DataConverters">
+                <element class="UnquoteText"/>
+              </property>
+              <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">VendorCredentialAccount.companyId</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                <property name="tagRelation" class="InJSONRelation">
+                  <property name="tagName" class="ElementName">
+                    <property name="name" class="String">1</property>
+                  </property>
+                </property>
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">.vendorAccountKey</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="reportingViaLog" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$IgnoreAndContinue"/>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="Transition" serializationversion="3" id="88">
+            <property name="name" class="String">Extract Id</property>
+            <property name="stepAction" class="ExtractJSON2">
+              <property name="dataConverters" class="DataConverters">
+                <element class="ExtractNumber"/>
+              </property>
+              <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">Invoice.id</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                <property name="tagRelation" class="InJSONRelation">
+                  <property name="tagName" class="ElementName">
+                    <property name="name" class="String">1</property>
+                  </property>
+                </property>
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">.id</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" idref="68"/>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="Transition" serializationversion="3" id="89">
+            <property name="name" idref="54"/>
+            <property name="stepAction" class="CloseWindow">
+              <property name="browserConfigurationSpecification" class="BrowserConfigurationSpecificationWebKit" serializationversion="26">
+                <property name="SSLUsage" idref="55"/>
+                <property name="ancestorProvider" class="BrowserConfigurationSpecificationAncestorProviderForStep"/>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Get Vendor Accounts Failed?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="Transition" serializationversion="3" id="90">
+            <property name="name" class="String"> Log - Invoice Id </property>
+            <property name="stepAction" class="WriteLog2">
+              <property name="expression" class="Expression" serializationversion="1">
+                <property name="text" class="String">&gt;&gt;Working Invoice Id: &lt;&lt; + Invoice.id</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0"/>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="Transition" serializationversion="3" id="91">
+            <property name="name" class="String">Extract Portal Account Number</property>
+            <property name="stepAction" class="ExtractJSON2">
+              <property name="dataConverters" class="DataConverters">
+                <element class="UnquoteText"/>
+              </property>
+              <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">VendorCredentialAccount.portalAccountNumber</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                <property name="tagRelation" class="InJSONRelation">
+                  <property name="tagName" class="ElementName">
+                    <property name="name" class="String">Account</property>
+                  </property>
+                </property>
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">.account.accountNumber</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Get Vendor Accounts Failed?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="Transition" serializationversion="3" id="92">
+            <property name="name" class="String">Log - Get Vendor Accounts Fail</property>
+            <property name="stepAction" class="WriteLog2">
+              <property name="expression" class="Expression" serializationversion="1">
+                <property name="text" class="String">&gt;&gt;Error, GetVendorAccounts&lt;&lt;</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0"/>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="End" id="93"/>
+        </steps>
+        <blockEndStep class="BlockEndStep" id="94"/>
+        <edges class="ArrayList">
+          <object class="TransitionEdge">
+            <from idref="66"/>
+            <to idref="67"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="67"/>
+            <to idref="69"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="67"/>
+            <to idref="92"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="69"/>
+            <to idref="70"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="70"/>
+            <to idref="72"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="72"/>
+            <to idref="74"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="74"/>
+            <to idref="75"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="75"/>
+            <to idref="76"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="76"/>
+            <to idref="77"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="77"/>
+            <to idref="78"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="78"/>
+            <to idref="80"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="78"/>
+            <to idref="91"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="80"/>
+            <to idref="81"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="81"/>
+            <to idref="82"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="82"/>
+            <to idref="83"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="83"/>
+            <to idref="84"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="84"/>
+            <to idref="85"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="85"/>
+            <to idref="86"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="86"/>
+            <to idref="87"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="87"/>
+            <to idref="88"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="88"/>
+            <to idref="89"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="89"/>
+            <to idref="90"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="90"/>
+            <to idref="94"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="91"/>
+            <to idref="81"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="92"/>
+            <to idref="93"/>
+          </object>
+        </edges>
+      </object>
+      <object class="Try" id="95">
+        <property name="name" class="String">Navigate to specific account?</property>
+      </object>
+      <object class="Group" id="96">
+        <name class="String">parse expected date</name>
+        <comment>
+          <null/>
+        </comment>
+        <blockBeginStep class="BlockBeginStep" id="97"/>
+        <steps class="ArrayList">
+          <object class="Try" id="98">
+            <property name="name" class="String">Expected Date and Invoice Date Offset?</property>
+          </object>
+          <object class="Transition" serializationversion="3" id="99">
+            <property name="name" class="String">Convert Variables</property>
+            <property name="stepAction" class="ConvertVariables">
+              <property name="entries" class="kapow.robot.plugin.common.stateprocessor.attributeconverter.AttributeConverterEntries">
+                <object class="kapow.robot.plugin.common.stateprocessor.attributeconverter.AttributeConverterEntry" serializationversion="0">
+                  <property name="fromAttributeName" class="kapow.robot.plugin.common.support.AttributeName">
+                    <property name="name" class="String">VendorCredentialAccount.expectedDate</property>
+                  </property>
+                  <property name="toAttributeName" class="kapow.robot.plugin.common.support.AttributeName">
+                    <property name="name" class="String">ParseExpectedDate.expectedDate</property>
+                  </property>
+                </object>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Expected Date and Invoice Date Offset?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="SnippetStep" id="100">
+            <name>
+              <null/>
+            </name>
+            <snippetName class="String">ParseExpectedDate</snippetName>
+            <snippetStepComment>
+              <null/>
+            </snippetStepComment>
+          </object>
+          <object class="Transition" serializationversion="3" id="101">
+            <property name="name" class="String"> Log - Parsing expected date failed.</property>
+            <property name="stepAction" class="WriteLog2">
+              <property name="expression" class="Expression" serializationversion="1">
+                <property name="text" class="String">&gt;&gt;Expected date: &lt;&lt; +VendorCredentialAccount.expectedDate + &gt;&gt; is either blank or in the wrong format, please reformat as yyyy-MM-dd. Additionally, invoiceDateOffset: &lt;&lt; +VendorCredentialAccount.offsetDate + &gt;&gt; must have a positive integer value. &lt;&lt;</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0"/>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="End" id="102"/>
+        </steps>
+        <blockEndStep class="BlockEndStep" id="103"/>
+        <edges class="ArrayList">
+          <object class="TransitionEdge">
+            <from idref="97"/>
+            <to idref="98"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="98"/>
+            <to idref="99"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="98"/>
+            <to idref="101"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="99"/>
+            <to idref="100"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="100"/>
+            <to idref="103"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="101"/>
+            <to idref="102"/>
+          </object>
+        </edges>
+      </object>
+      <object class="SnippetStep" id="104">
+        <name>
+          <null/>
+        </name>
+        <snippetName class="String">AccountStart</snippetName>
+        <snippetStepComment>
+          <null/>
+        </snippetStepComment>
+      </object>
+      <object class="Try" id="105">
+        <property name="name" class="String">Get Processed Entity Data failed?</property>
+      </object>
+      <object class="Group" id="106">
+        <name class="String">Collect Processed Entity Data</name>
+        <comment>
+          <null/>
+        </comment>
+        <blockBeginStep class="BlockBeginStep" id="107"/>
+        <steps class="ArrayList">
+          <object class="Transition" serializationversion="3" id="108">
+            <property name="name" class="String">Open Vendor Account JSON</property>
+            <property name="stepAction" class="OpenVariable">
+              <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">vendorAccountJSON</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Get Vendor Accounts Failed?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="Transition" serializationversion="3" id="109">
+            <property name="name" idref="30"/>
+            <property name="stepAction" class="SetNamedJSON">
+              <property name="tagName" class="DesiredElementName">
+                <property name="name" class="String">Invoices</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">@top:[0].invoices</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Get Processed Entity Data failed?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="Transition" serializationversion="3" id="110">
+            <property name="name" class="String">Extract Entity ID</property>
+            <property name="stepAction" class="ExtractJSON2">
+              <property name="dataConverters" class="DataConverters">
+                <element class="ExtractNumber"/>
+              </property>
+              <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">processedEntity.entity_id</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                <property name="tagRelation" class="InJSONRelation">
+                  <property name="tagName" class="ElementName">
+                    <property name="name" class="String">Invoices</property>
+                  </property>
+                </property>
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">[0].id</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Get Processed Entity Data failed?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="Transition" serializationversion="3" id="111">
+            <property name="name" class="String">Get Entity Status ID</property>
+            <property name="stepAction" class="AssignVariable" serializationversion="4">
+              <property name="stringExpr" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                <property name="value" class="String">11</property>
+              </property>
+              <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">processedEntity.entity_status_id</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Get Processed Entity Data failed?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="Transition" serializationversion="3" id="112">
+            <property name="name" class="String">Get Automation ID</property>
+            <property name="stepAction" class="AssignVariable" serializationversion="4">
+              <property name="stringExpr" class="Expression" serializationversion="1">
+                <property name="text" class="String">Robot.executionId</property>
+              </property>
+              <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">processedEntity.automation_id</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Get Processed Entity Data failed?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="Transition" serializationversion="3" id="113">
+            <property name="name" class="String">Get Invoice Note</property>
+            <property name="stepAction" class="AssignVariable" serializationversion="4">
+              <property name="stringExpr" class="Expression" serializationversion="1">
+                <property name="text" class="String">&gt;&gt;Collecting Data for processing for Invoice: &lt;&lt; + processedEntity.entity_id</property>
+              </property>
+              <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">processedEntity.note</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Get Processed Entity Data failed?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="Transition" serializationversion="3" id="114">
+            <property name="name" class="String">Get Process Status Name</property>
+            <property name="stepAction" class="AssignVariable" serializationversion="4">
+              <property name="stringExpr" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                <property name="value" class="String">Pending</property>
+              </property>
+              <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">processedEntity.process_status_name</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Get Processed Entity Data failed?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="Transition" serializationversion="3" id="115">
+            <property name="name" idref="54"/>
+            <property name="stepAction" class="CloseWindow">
+              <property name="browserConfigurationSpecification" class="BrowserConfigurationSpecificationWebKit" serializationversion="26">
+                <property name="SSLUsage" idref="55"/>
+                <property name="ancestorProvider" class="BrowserConfigurationSpecificationAncestorProviderForStep"/>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Get Vendor Accounts Failed?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="Transition" serializationversion="3" id="116">
+            <property name="name" class="String">Open Input JSON</property>
+            <property name="stepAction" class="OpenVariable">
+              <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">InputParameters.InputJSON</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Convert Fail?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="Transition" serializationversion="3" id="117">
+            <property name="name" class="String">Extract Job Run Id for Processing</property>
+            <property name="stepAction" class="ExtractJSON2">
+              <property name="dataConverters" class="DataConverters">
+                <element class="ExtractNumber"/>
+              </property>
+              <property name="attributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">processedEntity.jobrun_id</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="kapow.robot.robomaker.state.document.elementfinder.json.JSONElementFinder">
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">@top:.jobRun.id</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Convert Fail?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="Transition" serializationversion="3" id="118">
+            <property name="name" idref="54"/>
+            <property name="stepAction" class="CloseWindow">
+              <property name="browserConfigurationSpecification" class="BrowserConfigurationSpecificationWebKit" serializationversion="26">
+                <property name="SSLUsage" idref="55"/>
+                <property name="ancestorProvider" class="BrowserConfigurationSpecificationAncestorProviderForStep"/>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Get Vendor Accounts Failed?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="Transition" serializationversion="3" id="119">
+            <property name="name" class="String">Get Current Invoice Date </property>
+            <property name="stepAction" class="AssignVariable" serializationversion="4">
+              <property name="stringExpr" class="kapow.robot.plugin.common.support.expression.multipletype.ComplexVariableAllowedVariableExpression" serializationversion="2">
+                <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                  <property name="name" class="String">Invoice.invoiceDate</property>
+                </property>
+              </property>
+              <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                <property name="name" class="String">currentInvoiceDate</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Get Processed Entity Data failed?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="5"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+        </steps>
+        <blockEndStep class="BlockEndStep" id="120"/>
+        <edges class="ArrayList">
+          <object class="TransitionEdge">
+            <from idref="107"/>
+            <to idref="108"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="108"/>
+            <to idref="109"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="109"/>
+            <to idref="110"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="110"/>
+            <to idref="111"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="111"/>
+            <to idref="112"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="112"/>
+            <to idref="113"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="113"/>
+            <to idref="114"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="114"/>
+            <to idref="115"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="115"/>
+            <to idref="116"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="116"/>
+            <to idref="117"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="117"/>
+            <to idref="118"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="118"/>
+            <to idref="119"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="119"/>
+            <to idref="120"/>
+          </object>
+        </edges>
+      </object>
+      <object class="Transition" serializationversion="3" id="121">
+        <property name="name" class="String">Log - Get Procesed Entity Data</property>
+        <property name="stepAction" class="WriteLog2">
+          <property name="expression" class="Expression" serializationversion="1">
+            <property name="text" class="String">&gt;&gt;Error, Get Procesed Entity Data&lt;&lt;</property>
+          </property>
+        </property>
+        <property name="elementFinders" class="ElementFinders"/>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0"/>
+        <property name="comment">
+          <null/>
+        </property>
+        <property name="enabled" idref="5"/>
+        <property name="changedProperties" class="java.util.HashSet">
+          <element class="String">name</element>
+        </property>
+      </object>
+      <object class="End" id="122"/>
+      <object class="SnippetStep" id="123">
+        <name>
+          <null/>
+        </name>
+        <snippetName class="String">EHNavigationToBilling</snippetName>
+        <snippetStepComment>
+          <null/>
+        </snippetStepComment>
+      </object>
+      <object class="End" id="124"/>
+      <object class="Transition" serializationversion="3" id="125">
+        <property name="name" class="String">Log - Robot Complete!</property>
+        <property name="stepAction" class="WriteLog2">
+          <property name="expression" class="Expression" serializationversion="1">
+            <property name="text" class="String">&gt;&gt;Robot complete&lt;&lt;</property>
+          </property>
+        </property>
+        <property name="elementFinders" class="ElementFinders"/>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0"/>
+        <property name="comment">
+          <null/>
+        </property>
+        <property name="enabled" idref="5"/>
+        <property name="changedProperties" class="java.util.HashSet">
+          <element class="String">name</element>
+        </property>
+      </object>
+      <object class="End" id="126"/>
+    </steps>
+    <blockEndStep class="BlockEndStep" id="127"/>
+    <edges class="ArrayList">
+      <object class="TransitionEdge">
+        <from idref="3"/>
+        <to idref="4"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="4"/>
+        <to idref="6"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="6"/>
+        <to idref="64"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="64"/>
+        <to idref="65"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="64"/>
+        <to idref="125"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="65"/>
+        <to idref="95"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="95"/>
+        <to idref="96"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="95"/>
+        <to idref="123"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="96"/>
+        <to idref="104"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="104"/>
+        <to idref="105"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="105"/>
+        <to idref="106"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="105"/>
+        <to idref="121"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="106"/>
+        <to idref="127"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="121"/>
+        <to idref="122"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="123"/>
+        <to idref="124"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="125"/>
+        <to idref="126"/>
+      </object>
+    </edges>
+  </body>
+</object>
