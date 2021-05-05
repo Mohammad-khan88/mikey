@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<object class="Snippet" serializationversion="0">
+  <prologue>
+    <saved-by-versions>
+      <version>10.3.1.0</version>
+      <version>11.0.0.0</version>
+    </saved-by-versions>
+    <file-type>snippet</file-type>
+    <referenced-types>
+      <type name="InputOrchestrator"/>
+      <type name="CallAndResponse"/>
+      <type name="Job"/>
+      <type name="JobRun"/>
+      <type name="KapowPath"/>
+      <type name="RestResponse"/>
+      <type name="ManagementConsoleData"/>
+      <type name="OutputOrchestrator"/>
+      <type name="Product"/>
+      <type name="RecurringInvoice"/>
+      <type name="Tenant"/>
+      <type name="Vendor"/>
+      <type name="VendorCredentialQA"/>
+      <type name="VendorCredential"/>
+      <type name="LogEntry"/>
+    </referenced-types>
+    <triggers/>
+    <sub-robots/>
+    <device-mappings/>
+    <comment/>
+    <tags/>
+    <referenced-snippets>
+      <snippet name="ProcessedEntity"/>
+    </referenced-snippets>
+    <typed-variables>
+      <typed-variable name="InputOrchestrator" type-name="InputOrchestrator"/>
+      <typed-variable name="GetInvoice" type-name="CallAndResponse"/>
+      <typed-variable name="GetJobs" type-name="CallAndResponse"/>
+      <typed-variable name="GetProduct" type-name="CallAndResponse"/>
+      <typed-variable name="GetRecurringInvoice" type-name="CallAndResponse"/>
+      <typed-variable name="GetVendorCredential" type-name="CallAndResponse"/>
+      <typed-variable name="GetVendorCredentialQa" type-name="CallAndResponse"/>
+      <typed-variable name="Job" type-name="Job"/>
+      <typed-variable name="JobRun" type-name="JobRun"/>
+      <typed-variable name="KapowPath" type-name="KapowPath"/>
+      <typed-variable name="KapowResponse" type-name="RestResponse"/>
+      <typed-variable name="ManagementConsoleData" type-name="ManagementConsoleData"/>
+      <typed-variable name="OutputOrchestrator" type-name="OutputOrchestrator"/>
+      <typed-variable name="PostInvoice" type-name="CallAndResponse"/>
+      <typed-variable name="Product" type-name="Product"/>
+      <typed-variable name="RecurringInvoice" type-name="RecurringInvoice"/>
+      <typed-variable name="StartJob" type-name="CallAndResponse"/>
+      <typed-variable name="Tenant" type-name="Tenant"/>
+      <typed-variable name="Vendor" type-name="Vendor"/>
+      <typed-variable name="VendorCredentialQA" type-name="VendorCredentialQA"/>
+      <typed-variable name="VendorCredential" type-name="VendorCredential"/>
+      <typed-variable name="LogEntry" type-name="LogEntry"/>
+    </typed-variables>
+    <global-variables/>
+    <parameters>
+      <parameter name="InputOrchestrator" type-name="InputOrchestrator"/>
+    </parameters>
+    <return-variables/>
+    <store-in-database-variables/>
+    <browser-engine>WEBKIT</browser-engine>
+  </prologue>
+  <property name="variables" class="Variables">
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">InputOrchestrator</property>
+      <property name="parameter" class="Boolean">true</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">InputOrchestrator</property>
+        </property>
+        <property name="assignments" class="AttributeAssignments">
+          <property name="enterpriseApiUrl" class="AttributeAssignment">
+            <property name="attributeValue" class="String">http://naprodgvwsvc01.prod.tangoe.com/enterprise/api/</property>
+            <property name="currentlyAssigned" class="Boolean">true</property>
+            <property name="lastKnownAttributeType" class="java.lang.Class" id="0">kapow.robot.plugin.common.domain.StringAttributeType</property>
+          </property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">GetInvoice</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0" id="1">
+          <property name="typeName" class="String">CallAndResponse</property>
+        </property>
+        <property name="assignments" class="AttributeAssignments">
+          <property name="apiUrl" class="AttributeAssignment">
+            <property name="attributeValue" class="String">invoices</property>
+            <property name="currentlyAssigned" class="Boolean">true</property>
+            <property name="lastKnownAttributeType" idref="0"/>
+          </property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">GetJobs</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" idref="1"/>
+        <property name="assignments" class="AttributeAssignments">
+          <property name="apiUrl" class="AttributeAssignment">
+            <property name="attributeValue" class="String">jobs/jobsToRun</property>
+            <property name="currentlyAssigned" class="Boolean">true</property>
+            <property name="lastKnownAttributeType" idref="0"/>
+          </property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">GetProduct</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" idref="1"/>
+        <property name="assignments" class="AttributeAssignments">
+          <property name="apiUrl" class="AttributeAssignment">
+            <property name="attributeValue" class="String">products/</property>
+            <property name="currentlyAssigned" class="Boolean">true</property>
+            <property name="lastKnownAttributeType" idref="0"/>
+          </property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">GetRecurringInvoice</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" idref="1"/>
+        <property name="assignments" class="AttributeAssignments">
+          <property name="apiUrl" class="AttributeAssignment">
+            <property name="attributeValue" class="String">recurringInvoices</property>
+            <property name="currentlyAssigned" class="Boolean">true</property>
+            <property name="lastKnownAttributeType" idref="0"/>
+          </property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">GetVendorCredential</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" idref="1"/>
+        <property name="assignments" class="AttributeAssignments">
+          <property name="apiUrl" class="AttributeAssignment">
+            <property name="attributeValue" class="String">vendors/{id}/credentials</property>
+            <property name="currentlyAssigned" class="Boolean">true</property>
+            <property name="lastKnownAttributeType" idref="0"/>
+          </property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">GetVendorCredentialQa</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" idref="1"/>
+        <property name="assignments" class="AttributeAssignments">
+          <property name="apiUrl" class="AttributeAssignment">
+            <property name="attributeValue" class="String">vendorCredentialQAs/</property>
+            <property name="currentlyAssigned" class="Boolean">true</property>
+            <property name="lastKnownAttributeType" idref="0"/>
+          </property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">Job</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">Job</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">JobRun</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">JobRun</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">KapowPath</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">KapowPath</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">KapowResponse</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">RestResponse</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">ManagementConsoleData</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">ManagementConsoleData</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">OutputOrchestrator</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">OutputOrchestrator</property>
+        </property>
+        <property name="assignments" class="AttributeAssignments">
+          <property name="robotXml" class="AttributeAssignment">
+            <property name="attributeValue" class="String"/>
+            <property name="currentlyAssigned" class="Boolean">true</property>
+            <property name="lastKnownAttributeType" class="java.lang.Class">kapow.robot.plugin.common.domain.XML2AttributeType</property>
+          </property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">PostInvoice</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" idref="1"/>
+        <property name="assignments" class="AttributeAssignments">
+          <property name="apiUrl" class="AttributeAssignment">
+            <property name="attributeValue" class="String">invoices</property>
+            <property name="currentlyAssigned" class="Boolean">true</property>
+            <property name="lastKnownAttributeType" idref="0"/>
+          </property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">Product</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">Product</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">RecurringInvoice</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">RecurringInvoice</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">StartJob</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" idref="1"/>
+        <property name="assignments" class="AttributeAssignments">
+          <property name="apiUrl" class="AttributeAssignment">
+            <property name="attributeValue" class="String">jobs/startJob</property>
+            <property name="currentlyAssigned" class="Boolean">true</property>
+            <property name="lastKnownAttributeType" idref="0"/>
+          </property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">Tenant</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">Tenant</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">Vendor</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">Vendor</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">VendorCredentialQA</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">VendorCredentialQA</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">VendorCredential</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">VendorCredential</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">orchestratorParameters</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="SimpleTypeReference" id="2">
+          <property name="simpleTypeId" class="Integer">12</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">robotJSON</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="SimpleTypeReference" id="3">
+          <property name="simpleTypeId" class="Integer">152</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">transferJSON</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" idref="3"/>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">testDate</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" idref="2"/>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">vendorCredentialsJSON</property>
+      <property name="global" class="Boolean">true</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" idref="3"/>
+        <property name="assignments" class="AttributeAssignments">
+          <property name="value" class="AttributeAssignment">
+            <property name="attributeValue" class="String">[]</property>
+            <property name="currentlyAssigned" class="Boolean">true</property>
+            <property name="lastKnownAttributeType" class="java.lang.Class">kapow.robot.plugin.common.domain.JSONAttributeType</property>
+          </property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">vendorAccountJSON</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" idref="3"/>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">todaysDate</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" idref="2"/>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">LogEntry</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">LogEntry</property>
+        </property>
+      </property>
+    </object>
+  </property>
+  <comment class="String"/>
+  <body class="Body">
+    <blockBeginStep class="BlockBeginStep" id="4"/>
+    <steps class="ArrayList">
+      <object class="Transition" serializationversion="3" id="5">
+        <property name="name" class="String">Log - System Error</property>
+        <property name="stepAction" class="WriteLog2">
+          <property name="expression" class="Expression" serializationversion="1">
+            <property name="text" class="String">&gt;&gt;Error, System Error&lt;&lt;</property>
+          </property>
+        </property>
+        <property name="elementFinders" class="ElementFinders"/>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0"/>
+        <property name="comment">
+          <null/>
+        </property>
+        <property name="enabled" class="Boolean" id="6">true</property>
+        <property name="changedProperties" class="java.util.HashSet">
+          <element class="String">name</element>
+        </property>
+      </object>
+      <object class="Transition" serializationversion="3" id="7">
+        <property name="name" class="String">Assign Log Information</property>
+        <property name="stepAction" class="ConvertVariables">
+          <property name="entries" class="kapow.robot.plugin.common.stateprocessor.attributeconverter.AttributeConverterEntries">
+            <object class="kapow.robot.plugin.common.stateprocessor.attributeconverter.AttributeConverterEntry" serializationversion="0">
+              <property name="fromAttributeName" class="kapow.robot.plugin.common.support.AttributeName">
+                <property name="name" class="String">LogEntry.loggingLevel</property>
+              </property>
+              <property name="dataConverters" class="DataConverters">
+                <element class="EvaluateExpression" serializationversion="0">
+                  <property name="expression" class="String">&gt;&gt;ERROR&lt;&lt;</property>
+                </element>
+              </property>
+              <property name="toAttributeName" class="kapow.robot.plugin.common.support.AttributeName">
+                <property name="name" class="String">LogEntry.loggingLevel</property>
+              </property>
+            </object>
+            <object class="kapow.robot.plugin.common.stateprocessor.attributeconverter.AttributeConverterEntry" serializationversion="0">
+              <property name="fromAttributeName" class="kapow.robot.plugin.common.support.AttributeName">
+                <property name="name" class="String">LogEntry.logMessage</property>
+              </property>
+              <property name="dataConverters" class="DataConverters">
+                <element class="EvaluateExpression" serializationversion="0">
+                  <property name="expression" class="String">&gt;&gt;Error, System Error&lt;&lt;</property>
+                </element>
+              </property>
+              <property name="toAttributeName" class="kapow.robot.plugin.common.support.AttributeName">
+                <property name="name" class="String">LogEntry.logMessage</property>
+              </property>
+            </object>
+          </property>
+        </property>
+        <property name="elementFinders" class="ElementFinders"/>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+          <property name="changedProperties" class="java.util.HashSet">
+            <element class="String">reportingViaAPI</element>
+            <element class="String">reportingViaLog</element>
+          </property>
+          <property name="reportingViaAPI" class="Boolean">false</property>
+          <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$IgnoreAndContinue"/>
+        </property>
+        <property name="comment">
+          <null/>
+        </property>
+        <property name="enabled" idref="6"/>
+        <property name="changedProperties" class="java.util.HashSet">
+          <element class="String">name</element>
+        </property>
+      </object>
+      <object class="Transition" serializationversion="3" id="8">
+        <property name="name" class="String">Convert Variables</property>
+        <property name="stepAction" class="ConvertVariables">
+          <property name="entries" class="kapow.robot.plugin.common.stateprocessor.attributeconverter.AttributeConverterEntries">
+            <object class="kapow.robot.plugin.common.stateprocessor.attributeconverter.AttributeConverterEntry" serializationversion="0">
+              <property name="fromAttributeName" class="kapow.robot.plugin.common.support.AttributeName">
+                <property name="name" class="String">processedEntity.requestor_id</property>
+              </property>
+              <property name="dataConverters" class="DataConverters">
+                <element class="IfThen">
+                  <property name="statmentsList" class="BeanList">
+                    <object class="kapow.robot.plugin.common.stringprocessor.ifthenconverter.IfContainsStatement">
+                      <property name="condition" class="String">2</property>
+                      <property name="then" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                        <property name="value" class="String">64</property>
+                      </property>
+                    </object>
+                    <object class="kapow.robot.plugin.common.stringprocessor.ifthenconverter.IfContainsStatement">
+                      <property name="condition" class="String">1</property>
+                      <property name="then" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                        <property name="value" class="String">7</property>
+                      </property>
+                    </object>
+                    <object class="kapow.robot.plugin.common.stringprocessor.ifthenconverter.ElseStatement"/>
+                  </property>
+                </element>
+              </property>
+              <property name="toAttributeName" class="kapow.robot.plugin.common.support.AttributeName">
+                <property name="name" class="String">processedEntity.entity_status_id</property>
+              </property>
+            </object>
+            <object class="kapow.robot.plugin.common.stateprocessor.attributeconverter.AttributeConverterEntry" serializationversion="0">
+              <property name="fromAttributeName" class="kapow.robot.plugin.common.support.AttributeName">
+                <property name="name" class="String">processedEntity.note</property>
+              </property>
+              <property name="dataConverters" class="DataConverters">
+                <element class="EvaluateExpression" serializationversion="0">
+                  <property name="expression" class="String">&gt;&gt;Failed - System encountered an Unknown Condition&lt;&lt;</property>
+                </element>
+              </property>
+              <property name="toAttributeName" class="kapow.robot.plugin.common.support.AttributeName">
+                <property name="name" class="String">processedEntity.note</property>
+              </property>
+            </object>
+            <object class="kapow.robot.plugin.common.stateprocessor.attributeconverter.AttributeConverterEntry" serializationversion="0">
+              <property name="fromAttributeName" class="kapow.robot.plugin.common.support.AttributeName">
+                <property name="name" class="String">processedEntity.process_status_name</property>
+              </property>
+              <property name="dataConverters" class="DataConverters">
+                <element class="EvaluateExpression" serializationversion="0">
+                  <property name="expression" class="String">&gt;&gt;System Error&lt;&lt;</property>
+                </element>
+              </property>
+              <property name="toAttributeName" class="kapow.robot.plugin.common.support.AttributeName">
+                <property name="name" class="String">processedEntity.process_status_name</property>
+              </property>
+            </object>
+            <object class="kapow.robot.plugin.common.stateprocessor.attributeconverter.AttributeConverterEntry" serializationversion="0">
+              <property name="fromAttributeName" class="kapow.robot.plugin.common.support.AttributeName">
+                <property name="name" class="String">processedEntity.extra_json</property>
+              </property>
+              <property name="dataConverters" class="DataConverters">
+                <element class="EvaluateExpression" serializationversion="0">
+                  <property name="expression" class="String">&gt;&gt;{"filename" : &lt;&lt; + &gt;&gt;"&lt;&lt; + Invoice.fileName+ &gt;&gt;"&lt;&lt; +"}"</property>
+                </element>
+              </property>
+              <property name="toAttributeName" class="kapow.robot.plugin.common.support.AttributeName">
+                <property name="name" class="String">processedEntity.extra_json</property>
+              </property>
+            </object>
+          </property>
+        </property>
+        <property name="elementFinders" class="ElementFinders"/>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+          <property name="changedProperties" class="java.util.HashSet">
+            <element class="String">reportingViaAPI</element>
+            <element class="String">reportingViaLog</element>
+          </property>
+          <property name="reportingViaAPI" class="Boolean">false</property>
+          <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$IgnoreAndContinue"/>
+        </property>
+        <property name="comment">
+          <null/>
+        </property>
+        <property name="enabled" idref="6"/>
+        <property name="changedProperties" class="java.util.HashSet"/>
+      </object>
+      <object class="SnippetStep" id="9">
+        <name class="String">ProcessedEntitty</name>
+        <snippetName class="String">ProcessedEntity</snippetName>
+        <snippetStepComment>
+          <null/>
+        </snippetStepComment>
+      </object>
+    </steps>
+    <blockEndStep class="BlockEndStep" id="10"/>
+    <edges class="ArrayList">
+      <object class="TransitionEdge">
+        <from idref="4"/>
+        <to idref="5"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="5"/>
+        <to idref="7"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="7"/>
+        <to idref="8"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="8"/>
+        <to idref="9"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="9"/>
+        <to idref="10"/>
+      </object>
+    </edges>
+  </body>
+</object>
