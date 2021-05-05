@@ -1424,12 +1424,12 @@
             <property name="comment">
               <null/>
             </property>
-            <property name="enabled" idref="5"/>
+            <property name="enabled" class="Boolean" id="73">false</property>
             <property name="changedProperties" class="java.util.HashSet">
               <element class="String">name</element>
             </property>
           </object>
-          <object class="Transition" serializationversion="3" id="73">
+          <object class="Transition" serializationversion="3" id="74">
             <property name="name" class="String">Extract Account  Id</property>
             <property name="stepAction" class="ExtractJSON2">
               <property name="dataConverters" class="DataConverters">
@@ -1470,7 +1470,7 @@
               <element class="String">name</element>
             </property>
           </object>
-          <object class="Transition" serializationversion="3" id="74">
+          <object class="Transition" serializationversion="3" id="75">
             <property name="name" class="String">Extract Account Number</property>
             <property name="stepAction" class="ExtractJSON2">
               <property name="dataConverters" class="DataConverters">
@@ -1510,7 +1510,7 @@
             <property name="enabled" idref="5"/>
             <property name="changedProperties" class="java.util.HashSet"/>
           </object>
-          <object class="Transition" serializationversion="3" id="75">
+          <object class="Transition" serializationversion="3" id="76">
             <property name="name" class="String">Extract Company Id</property>
             <property name="stepAction" class="ExtractJSON2">
               <property name="dataConverters" class="DataConverters">
@@ -1543,7 +1543,7 @@
             <property name="enabled" idref="5"/>
             <property name="changedProperties" class="java.util.HashSet"/>
           </object>
-          <object class="Transition" serializationversion="3" id="76">
+          <object class="Transition" serializationversion="3" id="77">
             <property name="name" class="String">Extract Vendor Account Key</property>
             <property name="stepAction" class="ExtractJSON2">
               <property name="dataConverters" class="DataConverters">
@@ -1573,14 +1573,14 @@
             <property name="comment">
               <null/>
             </property>
-            <property name="enabled" idref="5"/>
+            <property name="enabled" idref="73"/>
             <property name="changedProperties" class="java.util.HashSet"/>
           </object>
-          <object class="Try" id="77">
-            <property name="name" class="String" id="78">No VAN?</property>
+          <object class="Try" id="78">
+            <property name="name" class="String" id="79">No VAN?</property>
             <property name="comment" class="String">PDF -&gt; EDI weirdness</property>
           </object>
-          <object class="Transition" serializationversion="3" id="79">
+          <object class="Transition" serializationversion="3" id="80">
             <property name="name" class="String">Extract Portal Account Number</property>
             <property name="stepAction" class="ExtractJSON2">
               <property name="dataConverters" class="DataConverters">
@@ -1610,7 +1610,7 @@
               <property name="reportingViaAPI" class="Boolean">false</property>
               <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
                 <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
-                  <property name="name" idref="78"/>
+                  <property name="name" idref="79"/>
                 </property>
               </property>
             </property>
@@ -1620,7 +1620,7 @@
             <property name="enabled" idref="5"/>
             <property name="changedProperties" class="java.util.HashSet"/>
           </object>
-          <object class="Transition" serializationversion="3" id="80">
+          <object class="Transition" serializationversion="3" id="81">
             <property name="name" class="String">Extract Process Identifier</property>
             <property name="stepAction" class="ExtractJSON2">
               <property name="dataConverters" class="DataConverters">
@@ -1659,7 +1659,7 @@
             <property name="enabled" idref="5"/>
             <property name="changedProperties" class="java.util.HashSet"/>
           </object>
-          <object class="Transition" serializationversion="3" id="81">
+          <object class="Transition" serializationversion="3" id="82">
             <property name="name" class="String">For Each Invoice</property>
             <property name="stepAction" class="ForEachItem"/>
             <property name="elementFinders" class="ElementFinders">
@@ -1686,7 +1686,7 @@
               <element class="String">name</element>
             </property>
           </object>
-          <object class="Transition" serializationversion="3" id="82">
+          <object class="Transition" serializationversion="3" id="83">
             <property name="name" class="String">Extract Expected Date</property>
             <property name="stepAction" class="ExtractJSON2">
               <property name="dataConverters" class="DataConverters">
@@ -1733,7 +1733,7 @@
             <property name="enabled" idref="5"/>
             <property name="changedProperties" class="java.util.HashSet"/>
           </object>
-          <object class="Transition" serializationversion="3" id="83">
+          <object class="Transition" serializationversion="3" id="84">
             <property name="name" class="String">Extract Invoice Date</property>
             <property name="stepAction" class="ExtractJSON2">
               <property name="dataConverters" class="DataConverters">
@@ -1775,7 +1775,7 @@
               <element class="String">name</element>
             </property>
           </object>
-          <object class="Transition" serializationversion="3" id="84">
+          <object class="Transition" serializationversion="3" id="85">
             <property name="name" class="String">Extract Expected Receive Date </property>
             <property name="stepAction" class="ExtractJSON2">
               <property name="dataConverters" class="DataConverters">
@@ -1817,7 +1817,7 @@
               <element class="String">name</element>
             </property>
           </object>
-          <object class="Transition" serializationversion="3" id="85">
+          <object class="Transition" serializationversion="3" id="86">
             <property name="name" class="String">Extract Invoice Period </property>
             <property name="stepAction" class="ExtractJSON2">
               <property name="dataConverters" class="DataConverters">
@@ -1859,7 +1859,7 @@
               <element class="String">name</element>
             </property>
           </object>
-          <object class="Transition" serializationversion="3" id="86">
+          <object class="Transition" serializationversion="3" id="87">
             <property name="name" class="String">Extract Company Id</property>
             <property name="stepAction" class="ExtractJSON2">
               <property name="dataConverters" class="DataConverters">
@@ -1892,7 +1892,7 @@
             <property name="enabled" idref="5"/>
             <property name="changedProperties" class="java.util.HashSet"/>
           </object>
-          <object class="Transition" serializationversion="3" id="87">
+          <object class="Transition" serializationversion="3" id="88">
             <property name="name" class="String">Extract Id</property>
             <property name="stepAction" class="ExtractJSON2">
               <property name="dataConverters" class="DataConverters">
@@ -1931,7 +1931,7 @@
             <property name="enabled" idref="5"/>
             <property name="changedProperties" class="java.util.HashSet"/>
           </object>
-          <object class="Transition" serializationversion="3" id="88">
+          <object class="Transition" serializationversion="3" id="89">
             <property name="name" idref="54"/>
             <property name="stepAction" class="CloseWindow">
               <property name="browserConfigurationSpecification" class="BrowserConfigurationSpecificationWebKit" serializationversion="26">
@@ -1958,7 +1958,7 @@
             <property name="enabled" idref="5"/>
             <property name="changedProperties" class="java.util.HashSet"/>
           </object>
-          <object class="Transition" serializationversion="3" id="89">
+          <object class="Transition" serializationversion="3" id="90">
             <property name="name" class="String"> Log - Invoice Id </property>
             <property name="stepAction" class="WriteLog2">
               <property name="expression" class="Expression" serializationversion="1">
@@ -1975,7 +1975,7 @@
               <element class="String">name</element>
             </property>
           </object>
-          <object class="Transition" serializationversion="3" id="90">
+          <object class="Transition" serializationversion="3" id="91">
             <property name="name" class="String">Extract Portal Account Number</property>
             <property name="stepAction" class="ExtractJSON2">
               <property name="dataConverters" class="DataConverters">
@@ -2015,7 +2015,7 @@
             <property name="enabled" idref="5"/>
             <property name="changedProperties" class="java.util.HashSet"/>
           </object>
-          <object class="Transition" serializationversion="3" id="91">
+          <object class="Transition" serializationversion="3" id="92">
             <property name="name" class="String">Log - Get Vendor Accounts Fail</property>
             <property name="stepAction" class="WriteLog2">
               <property name="expression" class="Expression" serializationversion="1">
@@ -2032,9 +2032,9 @@
               <element class="String">name</element>
             </property>
           </object>
-          <object class="End" id="92"/>
+          <object class="End" id="93"/>
         </steps>
-        <blockEndStep class="BlockEndStep" id="93"/>
+        <blockEndStep class="BlockEndStep" id="94"/>
         <edges class="ArrayList">
           <object class="TransitionEdge">
             <from idref="66"/>
@@ -2046,7 +2046,7 @@
           </object>
           <object class="TransitionEdge">
             <from idref="67"/>
-            <to idref="91"/>
+            <to idref="92"/>
           </object>
           <object class="TransitionEdge">
             <from idref="69"/>
@@ -2058,10 +2058,6 @@
           </object>
           <object class="TransitionEdge">
             <from idref="72"/>
-            <to idref="73"/>
-          </object>
-          <object class="TransitionEdge">
-            <from idref="73"/>
             <to idref="74"/>
           </object>
           <object class="TransitionEdge">
@@ -2078,15 +2074,15 @@
           </object>
           <object class="TransitionEdge">
             <from idref="77"/>
-            <to idref="79"/>
+            <to idref="78"/>
           </object>
           <object class="TransitionEdge">
-            <from idref="77"/>
-            <to idref="90"/>
-          </object>
-          <object class="TransitionEdge">
-            <from idref="79"/>
+            <from idref="78"/>
             <to idref="80"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="78"/>
+            <to idref="91"/>
           </object>
           <object class="TransitionEdge">
             <from idref="80"/>
@@ -2126,32 +2122,36 @@
           </object>
           <object class="TransitionEdge">
             <from idref="89"/>
-            <to idref="93"/>
+            <to idref="90"/>
           </object>
           <object class="TransitionEdge">
             <from idref="90"/>
-            <to idref="80"/>
+            <to idref="94"/>
           </object>
           <object class="TransitionEdge">
             <from idref="91"/>
-            <to idref="92"/>
+            <to idref="81"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="92"/>
+            <to idref="93"/>
           </object>
         </edges>
       </object>
-      <object class="Try" id="94">
+      <object class="Try" id="95">
         <property name="name" class="String">Navigate to specific account?</property>
       </object>
-      <object class="Group" id="95">
+      <object class="Group" id="96">
         <name class="String">parse expected date</name>
         <comment>
           <null/>
         </comment>
-        <blockBeginStep class="BlockBeginStep" id="96"/>
+        <blockBeginStep class="BlockBeginStep" id="97"/>
         <steps class="ArrayList">
-          <object class="Try" id="97">
+          <object class="Try" id="98">
             <property name="name" class="String">Expected Date and Invoice Date Offset?</property>
           </object>
-          <object class="Transition" serializationversion="3" id="98">
+          <object class="Transition" serializationversion="3" id="99">
             <property name="name" class="String">Convert Variables</property>
             <property name="stepAction" class="ConvertVariables">
               <property name="entries" class="kapow.robot.plugin.common.stateprocessor.attributeconverter.AttributeConverterEntries">
@@ -2184,7 +2184,7 @@
             <property name="enabled" idref="5"/>
             <property name="changedProperties" class="java.util.HashSet"/>
           </object>
-          <object class="SnippetStep" id="99">
+          <object class="SnippetStep" id="100">
             <name>
               <null/>
             </name>
@@ -2193,7 +2193,7 @@
               <null/>
             </snippetStepComment>
           </object>
-          <object class="Transition" serializationversion="3" id="100">
+          <object class="Transition" serializationversion="3" id="101">
             <property name="name" class="String"> Log - Parsing expected date failed.</property>
             <property name="stepAction" class="WriteLog2">
               <property name="expression" class="Expression" serializationversion="1">
@@ -2210,37 +2210,37 @@
               <element class="String">name</element>
             </property>
           </object>
-          <object class="End" id="101"/>
+          <object class="End" id="102"/>
         </steps>
-        <blockEndStep class="BlockEndStep" id="102"/>
+        <blockEndStep class="BlockEndStep" id="103"/>
         <edges class="ArrayList">
-          <object class="TransitionEdge">
-            <from idref="96"/>
-            <to idref="97"/>
-          </object>
           <object class="TransitionEdge">
             <from idref="97"/>
             <to idref="98"/>
-          </object>
-          <object class="TransitionEdge">
-            <from idref="97"/>
-            <to idref="100"/>
           </object>
           <object class="TransitionEdge">
             <from idref="98"/>
             <to idref="99"/>
           </object>
           <object class="TransitionEdge">
+            <from idref="98"/>
+            <to idref="101"/>
+          </object>
+          <object class="TransitionEdge">
             <from idref="99"/>
-            <to idref="102"/>
+            <to idref="100"/>
           </object>
           <object class="TransitionEdge">
             <from idref="100"/>
-            <to idref="101"/>
+            <to idref="103"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="101"/>
+            <to idref="102"/>
           </object>
         </edges>
       </object>
-      <object class="SnippetStep" id="103">
+      <object class="SnippetStep" id="104">
         <name>
           <null/>
         </name>
@@ -2249,17 +2249,17 @@
           <null/>
         </snippetStepComment>
       </object>
-      <object class="Try" id="104">
+      <object class="Try" id="105">
         <property name="name" class="String">Get Processed Entity Data failed?</property>
       </object>
-      <object class="Group" id="105">
+      <object class="Group" id="106">
         <name class="String">Collect Processed Entity Data</name>
         <comment>
           <null/>
         </comment>
-        <blockBeginStep class="BlockBeginStep" id="106"/>
+        <blockBeginStep class="BlockBeginStep" id="107"/>
         <steps class="ArrayList">
-          <object class="Transition" serializationversion="3" id="107">
+          <object class="Transition" serializationversion="3" id="108">
             <property name="name" class="String">Open Vendor Account JSON</property>
             <property name="stepAction" class="OpenVariable">
               <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
@@ -2284,7 +2284,7 @@
             <property name="enabled" idref="5"/>
             <property name="changedProperties" class="java.util.HashSet"/>
           </object>
-          <object class="Transition" serializationversion="3" id="108">
+          <object class="Transition" serializationversion="3" id="109">
             <property name="name" idref="30"/>
             <property name="stepAction" class="SetNamedJSON">
               <property name="tagName" class="DesiredElementName">
@@ -2316,7 +2316,7 @@
             <property name="enabled" idref="5"/>
             <property name="changedProperties" class="java.util.HashSet"/>
           </object>
-          <object class="Transition" serializationversion="3" id="109">
+          <object class="Transition" serializationversion="3" id="110">
             <property name="name" class="String">Extract Entity ID</property>
             <property name="stepAction" class="ExtractJSON2">
               <property name="dataConverters" class="DataConverters">
@@ -2357,7 +2357,7 @@
               <element class="String">name</element>
             </property>
           </object>
-          <object class="Transition" serializationversion="3" id="110">
+          <object class="Transition" serializationversion="3" id="111">
             <property name="name" class="String">Get Entity Status ID</property>
             <property name="stepAction" class="AssignVariable" serializationversion="4">
               <property name="stringExpr" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
@@ -2388,7 +2388,7 @@
               <element class="String">name</element>
             </property>
           </object>
-          <object class="Transition" serializationversion="3" id="111">
+          <object class="Transition" serializationversion="3" id="112">
             <property name="name" class="String">Get Automation ID</property>
             <property name="stepAction" class="AssignVariable" serializationversion="4">
               <property name="stringExpr" class="Expression" serializationversion="1">
@@ -2419,7 +2419,7 @@
               <element class="String">name</element>
             </property>
           </object>
-          <object class="Transition" serializationversion="3" id="112">
+          <object class="Transition" serializationversion="3" id="113">
             <property name="name" class="String">Get Invoice Note</property>
             <property name="stepAction" class="AssignVariable" serializationversion="4">
               <property name="stringExpr" class="Expression" serializationversion="1">
@@ -2450,7 +2450,7 @@
               <element class="String">name</element>
             </property>
           </object>
-          <object class="Transition" serializationversion="3" id="113">
+          <object class="Transition" serializationversion="3" id="114">
             <property name="name" class="String">Get Process Status Name</property>
             <property name="stepAction" class="AssignVariable" serializationversion="4">
               <property name="stringExpr" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
@@ -2481,7 +2481,7 @@
               <element class="String">name</element>
             </property>
           </object>
-          <object class="Transition" serializationversion="3" id="114">
+          <object class="Transition" serializationversion="3" id="115">
             <property name="name" idref="54"/>
             <property name="stepAction" class="CloseWindow">
               <property name="browserConfigurationSpecification" class="BrowserConfigurationSpecificationWebKit" serializationversion="26">
@@ -2508,7 +2508,7 @@
             <property name="enabled" idref="5"/>
             <property name="changedProperties" class="java.util.HashSet"/>
           </object>
-          <object class="Transition" serializationversion="3" id="115">
+          <object class="Transition" serializationversion="3" id="116">
             <property name="name" class="String">Open Input JSON</property>
             <property name="stepAction" class="OpenVariable">
               <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
@@ -2534,7 +2534,7 @@
             <property name="enabled" idref="5"/>
             <property name="changedProperties" class="java.util.HashSet"/>
           </object>
-          <object class="Transition" serializationversion="3" id="116">
+          <object class="Transition" serializationversion="3" id="117">
             <property name="name" class="String">Extract Job Run Id for Processing</property>
             <property name="stepAction" class="ExtractJSON2">
               <property name="dataConverters" class="DataConverters">
@@ -2570,7 +2570,7 @@
               <element class="String">name</element>
             </property>
           </object>
-          <object class="Transition" serializationversion="3" id="117">
+          <object class="Transition" serializationversion="3" id="118">
             <property name="name" idref="54"/>
             <property name="stepAction" class="CloseWindow">
               <property name="browserConfigurationSpecification" class="BrowserConfigurationSpecificationWebKit" serializationversion="26">
@@ -2597,7 +2597,7 @@
             <property name="enabled" idref="5"/>
             <property name="changedProperties" class="java.util.HashSet"/>
           </object>
-          <object class="Transition" serializationversion="3" id="118">
+          <object class="Transition" serializationversion="3" id="119">
             <property name="name" class="String">Get Current Invoice Date </property>
             <property name="stepAction" class="AssignVariable" serializationversion="4">
               <property name="stringExpr" class="kapow.robot.plugin.common.support.expression.multipletype.ComplexVariableAllowedVariableExpression" serializationversion="2">
@@ -2631,12 +2631,8 @@
             </property>
           </object>
         </steps>
-        <blockEndStep class="BlockEndStep" id="119"/>
+        <blockEndStep class="BlockEndStep" id="120"/>
         <edges class="ArrayList">
-          <object class="TransitionEdge">
-            <from idref="106"/>
-            <to idref="107"/>
-          </object>
           <object class="TransitionEdge">
             <from idref="107"/>
             <to idref="108"/>
@@ -2685,9 +2681,13 @@
             <from idref="118"/>
             <to idref="119"/>
           </object>
+          <object class="TransitionEdge">
+            <from idref="119"/>
+            <to idref="120"/>
+          </object>
         </edges>
       </object>
-      <object class="Transition" serializationversion="3" id="120">
+      <object class="Transition" serializationversion="3" id="121">
         <property name="name" class="String">Log - Get Procesed Entity Data</property>
         <property name="stepAction" class="WriteLog2">
           <property name="expression" class="Expression" serializationversion="1">
@@ -2704,8 +2704,8 @@
           <element class="String">name</element>
         </property>
       </object>
-      <object class="End" id="121"/>
-      <object class="SnippetStep" id="122">
+      <object class="End" id="122"/>
+      <object class="SnippetStep" id="123">
         <name>
           <null/>
         </name>
@@ -2714,8 +2714,8 @@
           <null/>
         </snippetStepComment>
       </object>
-      <object class="End" id="123"/>
-      <object class="Transition" serializationversion="3" id="124">
+      <object class="End" id="124"/>
+      <object class="Transition" serializationversion="3" id="125">
         <property name="name" class="String">Log - Robot Complete!</property>
         <property name="stepAction" class="WriteLog2">
           <property name="expression" class="Expression" serializationversion="1">
@@ -2732,9 +2732,9 @@
           <element class="String">name</element>
         </property>
       </object>
-      <object class="End" id="125"/>
+      <object class="End" id="126"/>
     </steps>
-    <blockEndStep class="BlockEndStep" id="126"/>
+    <blockEndStep class="BlockEndStep" id="127"/>
     <edges class="ArrayList">
       <object class="TransitionEdge">
         <from idref="3"/>
@@ -2754,26 +2754,22 @@
       </object>
       <object class="TransitionEdge">
         <from idref="64"/>
-        <to idref="124"/>
+        <to idref="125"/>
       </object>
       <object class="TransitionEdge">
         <from idref="65"/>
-        <to idref="94"/>
-      </object>
-      <object class="TransitionEdge">
-        <from idref="94"/>
         <to idref="95"/>
       </object>
       <object class="TransitionEdge">
-        <from idref="94"/>
-        <to idref="122"/>
+        <from idref="95"/>
+        <to idref="96"/>
       </object>
       <object class="TransitionEdge">
         <from idref="95"/>
-        <to idref="103"/>
+        <to idref="123"/>
       </object>
       <object class="TransitionEdge">
-        <from idref="103"/>
+        <from idref="96"/>
         <to idref="104"/>
       </object>
       <object class="TransitionEdge">
@@ -2781,24 +2777,28 @@
         <to idref="105"/>
       </object>
       <object class="TransitionEdge">
-        <from idref="104"/>
-        <to idref="120"/>
+        <from idref="105"/>
+        <to idref="106"/>
       </object>
       <object class="TransitionEdge">
         <from idref="105"/>
-        <to idref="126"/>
-      </object>
-      <object class="TransitionEdge">
-        <from idref="120"/>
         <to idref="121"/>
       </object>
       <object class="TransitionEdge">
-        <from idref="122"/>
-        <to idref="123"/>
+        <from idref="106"/>
+        <to idref="127"/>
       </object>
       <object class="TransitionEdge">
-        <from idref="124"/>
-        <to idref="125"/>
+        <from idref="121"/>
+        <to idref="122"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="123"/>
+        <to idref="124"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="125"/>
+        <to idref="126"/>
       </object>
     </edges>
   </body>

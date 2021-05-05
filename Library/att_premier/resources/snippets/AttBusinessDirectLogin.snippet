@@ -1,0 +1,1018 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<object class="Snippet" serializationversion="0">
+  <prologue>
+    <saved-by-versions>
+      <version>10.3.1.0</version>
+      <version>11.0.0.0</version>
+    </saved-by-versions>
+    <file-type>snippet</file-type>
+    <referenced-types>
+      <type name="VendorCredential"/>
+    </referenced-types>
+    <triggers/>
+    <sub-robots/>
+    <device-mappings/>
+    <comment/>
+    <tags/>
+    <referenced-snippets>
+      <snippet name="EHLoginFailed"/>
+      <snippet name="EHCredential"/>
+      <snippet name="EHVendorPortal"/>
+      <snippet name="EHCredentialLocked"/>
+      <snippet name="EHCredentialExpired"/>
+    </referenced-snippets>
+    <typed-variables>
+      <typed-variable name="VendorCredential" type-name="VendorCredential"/>
+    </typed-variables>
+    <global-variables/>
+    <parameters/>
+    <return-variables/>
+    <store-in-database-variables/>
+    <browser-engine>WEBKIT</browser-engine>
+  </prologue>
+  <property name="variables" class="Variables">
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">VendorCredential</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">VendorCredential</property>
+        </property>
+      </property>
+    </object>
+  </property>
+  <comment class="String">log into ATT business direct using the following inputs:
+-password
+-secret
+-username
+-vendorUrl</comment>
+  <body class="Body">
+    <blockBeginStep class="BlockBeginStep" id="0"/>
+    <steps class="ArrayList">
+      <object class="Try" id="1">
+        <property name="name" class="String" id="2">Vendor portal load?</property>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+          <property name="changedProperties" class="java.util.HashSet">
+            <element class="String" id="3">reportingViaAPI</element>
+            <element class="String" id="4">reportingViaLog</element>
+          </property>
+          <property name="reportingViaAPI" class="Boolean">false</property>
+          <property name="reportingViaLog" class="Boolean">false</property>
+        </property>
+      </object>
+      <object class="Try" id="5">
+        <property name="name" class="String">Re-Login?</property>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+          <property name="changedProperties" class="java.util.HashSet">
+            <element class="String" id="6">reportingViaAPI</element>
+            <element class="String">reportingViaLog</element>
+          </property>
+          <property name="reportingViaAPI" class="Boolean">false</property>
+          <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+            <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+              <property name="name" class="String">Navigate to specific account?</property>
+            </property>
+          </property>
+        </property>
+      </object>
+      <object class="Transition" serializationversion="3" id="7">
+        <property name="name" class="String" id="8">Load Page</property>
+        <property name="stepAction" class="LoadPage2">
+          <property name="urlProvider" class="kapow.robot.plugin.common.stepaction.urlprovider2.AttributeURLProvider2" serializationversion="1">
+            <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+              <property name="name" class="String">VendorCredential.accessUrl</property>
+            </property>
+          </property>
+          <property name="waitCriteria" class="WaitCriteria">
+            <object class="IdleWaitCriterion"/>
+          </property>
+          <property name="browserConfigurationSpecification" class="BrowserConfigurationSpecificationWebKit" serializationversion="26">
+            <property name="httpUserAgent" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+              <property name="value" class="String">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36</property>
+            </property>
+            <property name="timeout" class="Double">120.0</property>
+            <property name="ignoreLoadErrors" class="Boolean">true</property>
+            <property name="loadImages" class="kapow.robot.plugin.common.support.predicate.unary.url.AllURLPredicate"/>
+            <property name="sourceCorrections" class="DataConverters">
+              <element class="ReplaceText">
+                <property name="textToReplace" class="String">let </property>
+                <property name="replacementText" class="String">var </property>
+              </element>
+            </property>
+            <property name="ancestorProvider" class="BrowserConfigurationSpecificationAncestorProviderForStep"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">ignoreLoadErrors</element>
+              <element class="String">loadImages</element>
+              <element class="String">SSLUsage</element>
+            </property>
+          </property>
+        </property>
+        <property name="elementFinders" class="ElementFinders"/>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+          <property name="changedProperties" class="java.util.HashSet">
+            <element class="String">reportingViaLog</element>
+          </property>
+          <property name="reportingViaAPI" class="Boolean">false</property>
+          <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+            <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+              <property name="name" class="String">Vendor portal load?</property>
+            </property>
+          </property>
+        </property>
+        <property name="comment">
+          <null/>
+        </property>
+        <property name="enabled" class="Boolean" id="9">true</property>
+        <property name="changedProperties" class="java.util.HashSet"/>
+      </object>
+      <object class="Transition" serializationversion="3" id="10">
+        <property name="name" class="String">Enter Username</property>
+        <property name="stepAction" class="EnterText">
+          <property name="textExpression" class="kapow.robot.plugin.common.support.expression.multipletype.VariableExpression" serializationversion="2">
+            <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+              <property name="name" class="String">VendorCredential.username</property>
+            </property>
+          </property>
+          <property name="waitCriteria" class="WaitCriteria">
+            <object class="IdleWaitCriterion"/>
+          </property>
+          <property name="browserConfigurationSpecification" class="BrowserConfigurationSpecificationWebKit" serializationversion="26">
+            <property name="SSLUsage" class="com.kapowtech.net.ssl.SSLUsage" id="11">
+              <property name="enum-name" class="String">TLS10_TLSHello</property>
+            </property>
+            <property name="ancestorProvider" class="BrowserConfigurationSpecificationAncestorProviderForStep"/>
+          </property>
+        </property>
+        <property name="elementFinders" class="ElementFinders">
+          <object class="DefaultNamedElementAwareDOMElementFinder" serializationversion="4">
+            <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+              <property name="value" class="String">.*.input</property>
+            </property>
+            <property name="attributeName" class="String">id</property>
+            <property name="attributeValue" class="kapow.robot.plugin.common.support.predicate.unary.string.FixedStringPredicate">
+              <property name="text" class="String">UserID</property>
+            </property>
+          </object>
+        </property>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+          <property name="changedProperties" class="java.util.HashSet">
+            <element class="String">reportingViaLog</element>
+          </property>
+          <property name="reportingViaAPI" class="Boolean">false</property>
+          <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+            <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+              <property name="name" idref="2"/>
+            </property>
+          </property>
+        </property>
+        <property name="comment">
+          <null/>
+        </property>
+        <property name="enabled" idref="9"/>
+        <property name="changedProperties" class="java.util.HashSet"/>
+      </object>
+      <object class="Transition" serializationversion="3" id="12">
+        <property name="name" class="String">Wait</property>
+        <property name="stepAction" class="Wait2">
+          <property name="seconds" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+            <property name="value" class="String">2.0</property>
+          </property>
+        </property>
+        <property name="elementFinders" class="ElementFinders"/>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0"/>
+        <property name="comment">
+          <null/>
+        </property>
+        <property name="enabled" idref="9"/>
+        <property name="changedProperties" class="java.util.HashSet"/>
+      </object>
+      <object class="Transition" serializationversion="3" id="13">
+        <property name="name" class="String">Enter Password</property>
+        <property name="stepAction" class="EnterText">
+          <property name="textExpression" class="kapow.robot.plugin.common.support.expression.multipletype.VariableExpression" serializationversion="2">
+            <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+              <property name="name" class="String">VendorCredential.password</property>
+            </property>
+          </property>
+          <property name="waitCriteria" class="WaitCriteria">
+            <object class="IdleWaitCriterion"/>
+          </property>
+          <property name="browserConfigurationSpecification" class="BrowserConfigurationSpecificationWebKit" serializationversion="26">
+            <property name="SSLUsage" idref="11"/>
+            <property name="ancestorProvider" class="BrowserConfigurationSpecificationAncestorProviderForStep"/>
+          </property>
+        </property>
+        <property name="elementFinders" class="ElementFinders">
+          <object class="DefaultNamedElementAwareDOMElementFinder" serializationversion="4">
+            <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+              <property name="value" class="String">.*.input</property>
+            </property>
+            <property name="attributeName" class="String">id</property>
+            <property name="attributeValue" class="kapow.robot.plugin.common.support.predicate.unary.string.FixedStringPredicate">
+              <property name="text" class="String">field</property>
+            </property>
+          </object>
+        </property>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+          <property name="changedProperties" class="java.util.HashSet">
+            <element class="String">reportingViaLog</element>
+          </property>
+          <property name="reportingViaAPI" class="Boolean">false</property>
+          <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+            <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+              <property name="name" idref="2"/>
+            </property>
+          </property>
+        </property>
+        <property name="comment">
+          <null/>
+        </property>
+        <property name="enabled" idref="9"/>
+        <property name="changedProperties" class="java.util.HashSet"/>
+      </object>
+      <object class="Transition" serializationversion="3" id="14">
+        <property name="name" class="String">Enter Password</property>
+        <property name="stepAction" class="EnterText">
+          <property name="textExpression" class="kapow.robot.plugin.common.support.expression.multipletype.VariableExpression" serializationversion="2">
+            <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+              <property name="name" class="String">VendorCredential.password</property>
+            </property>
+          </property>
+          <property name="waitCriteria" class="WaitCriteria">
+            <object class="IdleWaitCriterion"/>
+          </property>
+          <property name="browserConfigurationSpecification" class="BrowserConfigurationSpecificationWebKit" serializationversion="26">
+            <property name="SSLUsage" idref="11"/>
+            <property name="ancestorProvider" class="BrowserConfigurationSpecificationAncestorProviderForStep"/>
+          </property>
+        </property>
+        <property name="elementFinders" class="ElementFinders">
+          <object class="DefaultNamedElementAwareDOMElementFinder" serializationversion="4">
+            <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+              <property name="value" class="String">.*.input</property>
+            </property>
+            <property name="attributeName" class="String">id</property>
+            <property name="attributeValue" class="kapow.robot.plugin.common.support.predicate.unary.string.FixedStringPredicate">
+              <property name="text" class="String">field</property>
+            </property>
+          </object>
+        </property>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+          <property name="changedProperties" class="java.util.HashSet">
+            <element class="String">reportingViaLog</element>
+          </property>
+          <property name="reportingViaAPI" class="Boolean">false</property>
+          <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+            <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+              <property name="name" class="String">Vendor portal load?</property>
+            </property>
+          </property>
+        </property>
+        <property name="comment">
+          <null/>
+        </property>
+        <property name="enabled" idref="9"/>
+        <property name="changedProperties" class="java.util.HashSet"/>
+      </object>
+      <object class="Transition" serializationversion="3" id="15">
+        <property name="name" class="String">Click Login</property>
+        <property name="stepAction" class="Click" serializationversion="0">
+          <property name="waitCriteria" class="WaitCriteria">
+            <object class="IdleWaitCriterion">
+              <property name="timeout" class="Integer">10000</property>
+            </object>
+          </property>
+          <property name="browserConfigurationSpecification" class="BrowserConfigurationSpecificationWebKit" serializationversion="26">
+            <property name="httpUserAgent" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+              <property name="value" class="String">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36</property>
+            </property>
+            <property name="timeout" class="Double">120.0</property>
+            <property name="ignoreLoadErrors" class="Boolean">true</property>
+            <property name="loadImages" class="kapow.robot.plugin.common.support.predicate.unary.url.AllURLPredicate"/>
+            <property name="sourceCorrections" class="DataConverters">
+              <element class="ReplaceText">
+                <property name="textToReplace" class="String">let </property>
+                <property name="replacementText" class="String">var </property>
+              </element>
+              <element class="ReplaceText">
+                <property name="textToReplace" class="String">"use strict"</property>
+              </element>
+            </property>
+            <property name="ancestorProvider" class="BrowserConfigurationSpecificationAncestorProviderForStep"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">javaScriptPolyfills</element>
+              <element class="String">SSLUsage</element>
+            </property>
+          </property>
+        </property>
+        <property name="elementFinders" class="ElementFinders">
+          <object class="DefaultNamedElementAwareDOMElementFinder" serializationversion="4">
+            <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+              <property name="value" class="String">.*.input</property>
+            </property>
+            <property name="attributeName" class="String">id</property>
+            <property name="attributeValue" class="kapow.robot.plugin.common.support.predicate.unary.string.FixedStringPredicate">
+              <property name="text" class="String">loginToBD</property>
+            </property>
+          </object>
+        </property>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+          <property name="changedProperties" class="java.util.HashSet">
+            <element class="String">reportingViaLog</element>
+          </property>
+          <property name="reportingViaAPI" class="Boolean">false</property>
+          <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+            <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+              <property name="name" idref="2"/>
+            </property>
+          </property>
+        </property>
+        <property name="comment">
+          <null/>
+        </property>
+        <property name="enabled" idref="9"/>
+        <property name="changedProperties" class="java.util.HashSet">
+          <element class="String">name</element>
+        </property>
+      </object>
+      <object class="Try" id="16">
+        <property name="name" class="String">Login Success?</property>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+          <property name="changedProperties" class="java.util.HashSet">
+            <element idref="3"/>
+            <element idref="4"/>
+          </property>
+          <property name="reportingViaAPI" class="Boolean">false</property>
+          <property name="reportingViaLog" class="Boolean">false</property>
+        </property>
+      </object>
+      <object class="Transition" serializationversion="3" id="17">
+        <property name="name" class="String">Verify Login</property>
+        <property name="stepAction" class="TestTag" serializationversion="1">
+          <property name="pattern" class="kapow.robot.plugin.common.support.expression.stringexpr.PatternValueStringExpression">
+            <property name="value" class="String">(.*)Home(.*)</property>
+          </property>
+          <property name="include" class="Boolean">true</property>
+        </property>
+        <property name="elementFinders" class="ElementFinders">
+          <object class="DefaultNamedElementAwareDOMElementFinder" serializationversion="4">
+            <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+              <property name="value" class="String">.*.title</property>
+            </property>
+          </object>
+        </property>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+          <property name="changedProperties" class="java.util.HashSet">
+            <element class="String">reportingViaLog</element>
+          </property>
+          <property name="reportingViaAPI" class="Boolean">false</property>
+          <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+            <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+              <property name="name" class="String">Login Success?</property>
+            </property>
+          </property>
+        </property>
+        <property name="comment">
+          <null/>
+        </property>
+        <property name="enabled" idref="9"/>
+        <property name="changedProperties" class="java.util.HashSet">
+          <element class="String">name</element>
+        </property>
+      </object>
+      <object class="Transition" serializationversion="3" id="18">
+        <property name="name" class="String">Set Checkbox</property>
+        <property name="stepAction" class="SetCheckbox">
+          <property name="browserConfigurationSpecification" class="BrowserConfigurationSpecificationWebKit" serializationversion="26">
+            <property name="ancestorProvider" class="BrowserConfigurationSpecificationAncestorProviderForStep"/>
+          </property>
+        </property>
+        <property name="elementFinders" class="ElementFinders">
+          <object class="DefaultNamedElementAwareDOMElementFinder" serializationversion="4">
+            <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+              <property name="value" class="String">.*.input</property>
+            </property>
+            <property name="attributeName" class="String">id</property>
+            <property name="attributeValue" class="kapow.robot.plugin.common.support.predicate.unary.string.FixedStringPredicate">
+              <property name="text" class="String">supressmsg</property>
+            </property>
+          </object>
+        </property>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+          <property name="changedProperties" class="java.util.HashSet">
+            <element class="String" id="19">reportingViaAPI</element>
+            <element class="String" id="20">reportingViaLog</element>
+          </property>
+          <property name="reportingViaAPI" class="Boolean">false</property>
+          <property name="reportingViaLog" class="Boolean">false</property>
+          <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$IgnoreAndContinue"/>
+        </property>
+        <property name="comment">
+          <null/>
+        </property>
+        <property name="enabled" idref="9"/>
+        <property name="changedProperties" class="java.util.HashSet"/>
+      </object>
+      <object class="Transition" serializationversion="3" id="21">
+        <property name="name" class="String">Click OK</property>
+        <property name="stepAction" class="Click" serializationversion="0">
+          <property name="browserConfigurationSpecification" class="BrowserConfigurationSpecificationWebKit" serializationversion="26">
+            <property name="httpUserAgent" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+              <property name="value" class="String">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36</property>
+            </property>
+            <property name="timeout" class="Double">120.0</property>
+            <property name="ignoreLoadErrors" class="Boolean">true</property>
+            <property name="loadImages" class="kapow.robot.plugin.common.support.predicate.unary.url.AllURLPredicate"/>
+            <property name="ignoreAlertMessages" class="Boolean">true</property>
+            <property name="sourceCorrections" class="DataConverters">
+              <element class="ReplaceText">
+                <property name="textToReplace" class="String">let </property>
+                <property name="replacementText" class="String">var </property>
+              </element>
+              <element class="ReplaceText">
+                <property name="textToReplace" class="String">"use strict"</property>
+              </element>
+            </property>
+            <property name="ancestorProvider" class="BrowserConfigurationSpecificationAncestorProviderForStep"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">ignoreAlertMessages</element>
+            </property>
+          </property>
+        </property>
+        <property name="elementFinders" class="ElementFinders">
+          <object class="DefaultNamedElementAwareDOMElementFinder" serializationversion="4">
+            <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+              <property name="value" class="String">.*.input</property>
+            </property>
+            <property name="attributeName" class="String">id</property>
+            <property name="attributeValue" class="kapow.robot.plugin.common.support.predicate.unary.string.FixedStringPredicate">
+              <property name="text" class="String">rno</property>
+            </property>
+          </object>
+        </property>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+          <property name="changedProperties" class="java.util.HashSet">
+            <element idref="19"/>
+            <element idref="20"/>
+          </property>
+          <property name="reportingViaAPI" class="Boolean">false</property>
+          <property name="reportingViaLog" class="Boolean">false</property>
+          <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$IgnoreAndContinue"/>
+        </property>
+        <property name="comment">
+          <null/>
+        </property>
+        <property name="enabled" idref="9"/>
+        <property name="changedProperties" class="java.util.HashSet">
+          <element class="String">name</element>
+        </property>
+      </object>
+      <object class="Try" id="22">
+        <property name="name" class="String">no credential warning?</property>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+          <property name="changedProperties" class="java.util.HashSet">
+            <element idref="3"/>
+            <element idref="4"/>
+          </property>
+          <property name="reportingViaAPI" class="Boolean">false</property>
+          <property name="reportingViaLog" class="Boolean">false</property>
+        </property>
+      </object>
+      <object class="Group" id="23">
+        <name class="String">Login Unsuccessful</name>
+        <comment>
+          <null/>
+        </comment>
+        <blockBeginStep class="BlockBeginStep" id="24"/>
+        <steps class="ArrayList">
+          <object class="Try" id="25">
+            <property name="name" class="String" id="26">Temporary Password Screen?</property>
+          </object>
+          <object class="Transition" serializationversion="3" id="27">
+            <property name="name" class="String">Check for Locked</property>
+            <property name="stepAction" class="TestTag" serializationversion="1">
+              <property name="pattern" class="kapow.robot.plugin.common.support.expression.stringexpr.PatternValueStringExpression">
+                <property name="value" class="String">(.*)ocked(.*)</property>
+              </property>
+              <property name="include" class="Boolean">true</property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="DefaultNamedElementAwareDOMElementFinder" serializationversion="4">
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">.*.div</property>
+                </property>
+                <property name="attributeName" class="String">id</property>
+                <property name="attributeValue" class="kapow.robot.plugin.common.support.predicate.unary.string.FixedStringPredicate">
+                  <property name="text" class="String">elog</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="reportingViaLog" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" idref="26"/>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="9"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="SnippetStep" id="28">
+            <name class="String">EHCredentialLocked</name>
+            <snippetName class="String">EHCredentialLocked</snippetName>
+            <snippetStepComment>
+              <null/>
+            </snippetStepComment>
+          </object>
+          <object class="Try" id="29">
+            <property name="name" class="String">Credential Invalid</property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element idref="3"/>
+                <element idref="4"/>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="reportingViaLog" class="Boolean">false</property>
+            </property>
+          </object>
+          <object class="Transition" serializationversion="3" id="30">
+            <property name="name" class="String">Temporary Password?</property>
+            <property name="stepAction" class="TestTag" serializationversion="1">
+              <property name="pattern" class="kapow.robot.plugin.common.support.expression.stringexpr.PatternValueStringExpression">
+                <property name="value" class="String">(.*)Temporary Password(.*)</property>
+              </property>
+              <property name="domToTextConverter" class="kapow.robot.plugin.common.support.vtopia.converter.TextOutputtingHTMLDOMToTextConverter"/>
+              <property name="include" class="Boolean">true</property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="DefaultNamedElementAwareDOMElementFinder" serializationversion="4">
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">.*.div</property>
+                </property>
+                <property name="attributeName" class="String">class</property>
+                <property name="attributeValue" class="kapow.robot.plugin.common.support.predicate.unary.string.FixedStringPredicate">
+                  <property name="text" class="String">appHeading</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="reportingViaLog" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Credential Invalid</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="9"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="SnippetStep" id="31">
+            <name class="String">EHCredentialLocked</name>
+            <snippetName class="String">EHCredentialLocked</snippetName>
+            <snippetStepComment>
+              <null/>
+            </snippetStepComment>
+          </object>
+          <object class="End" id="32"/>
+          <object class="Try" id="33">
+            <property name="name" class="String">Expired?</property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element idref="3"/>
+                <element idref="4"/>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="reportingViaLog" class="Boolean">false</property>
+            </property>
+          </object>
+          <object class="Transition" serializationversion="3" id="34">
+            <property name="name" class="String">Check for Invalid</property>
+            <property name="stepAction" class="TestTag" serializationversion="1">
+              <property name="pattern" class="kapow.robot.plugin.common.support.expression.stringexpr.PatternValueStringExpression">
+                <property name="value" class="String">(.*)Username and Password(.*)</property>
+              </property>
+              <property name="include" class="Boolean">true</property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="DefaultNamedElementAwareDOMElementFinder" serializationversion="4">
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">.*.div</property>
+                </property>
+                <property name="attributeName" class="String">id</property>
+                <property name="attributeValue" class="kapow.robot.plugin.common.support.predicate.unary.string.FixedStringPredicate">
+                  <property name="text" class="String">elog</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="reportingViaLog" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Expired?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="9"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="SnippetStep" id="35">
+            <name class="String">EHCredential</name>
+            <snippetName class="String">EHCredential</snippetName>
+            <snippetStepComment>
+              <null/>
+            </snippetStepComment>
+          </object>
+          <object class="End" id="36"/>
+          <object class="Try" id="37">
+            <property name="name" class="String">Change Password Screen?</property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element idref="3"/>
+                <element idref="4"/>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="reportingViaLog" class="Boolean">false</property>
+            </property>
+          </object>
+          <object class="Transition" serializationversion="3" id="38">
+            <property name="name" class="String">Check for Expired</property>
+            <property name="stepAction" class="TestTag" serializationversion="1">
+              <property name="pattern" class="kapow.robot.plugin.common.support.expression.stringexpr.PatternValueStringExpression">
+                <property name="value" class="String">(.*)xpired(.*)|(.*)deactivated(.*)</property>
+              </property>
+              <property name="include" class="Boolean">true</property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="DefaultNamedElementAwareDOMElementFinder" serializationversion="4">
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">.*.div</property>
+                </property>
+                <property name="attributeName" class="String">id</property>
+                <property name="attributeValue" class="kapow.robot.plugin.common.support.predicate.unary.string.FixedStringPredicate">
+                  <property name="text" class="String">elog</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="reportingViaLog" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">Change Password Screen?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="9"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="SnippetStep" id="39">
+            <name class="String">EHCredentialExpired</name>
+            <snippetName class="String">EHCredentialExpired</snippetName>
+            <snippetStepComment>
+              <null/>
+            </snippetStepComment>
+          </object>
+          <object class="End" id="40"/>
+          <object class="Transition" serializationversion="3" id="41">
+            <property name="name" class="String">Check for Expired</property>
+            <property name="stepAction" class="TestTag" serializationversion="1">
+              <property name="pattern" class="kapow.robot.plugin.common.support.expression.stringexpr.PatternValueStringExpression">
+                <property name="value" class="String">(.*)xpired(.*)|(.*)deactivated(.*)</property>
+              </property>
+              <property name="include" class="Boolean">true</property>
+            </property>
+            <property name="elementFinders" class="ElementFinders">
+              <object class="DefaultNamedElementAwareDOMElementFinder" serializationversion="4">
+                <property name="nodePath" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                  <property name="value" class="String">.*.div</property>
+                </property>
+                <property name="attributeName" class="String">class</property>
+                <property name="attributeValue" class="kapow.robot.plugin.common.support.predicate.unary.string.FixedStringPredicate">
+                  <property name="text" class="String">errorMsg_wrap</property>
+                </property>
+              </object>
+            </property>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" class="String">no credential warning?</property>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="9"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">name</element>
+            </property>
+          </object>
+          <object class="SnippetStep" id="42">
+            <name class="String">EHCredentialExpired</name>
+            <snippetName class="String">EHCredentialExpired</snippetName>
+            <snippetStepComment>
+              <null/>
+            </snippetStepComment>
+          </object>
+          <object class="End" id="43"/>
+        </steps>
+        <blockEndStep class="BlockEndStep" id="44"/>
+        <edges class="ArrayList">
+          <object class="TransitionEdge">
+            <from idref="24"/>
+            <to idref="25"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="25"/>
+            <to idref="27"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="25"/>
+            <to idref="29"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="27"/>
+            <to idref="28"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="28"/>
+            <to idref="44"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="29"/>
+            <to idref="30"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="29"/>
+            <to idref="33"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="30"/>
+            <to idref="31"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="31"/>
+            <to idref="32"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="33"/>
+            <to idref="34"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="33"/>
+            <to idref="37"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="34"/>
+            <to idref="35"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="35"/>
+            <to idref="36"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="37"/>
+            <to idref="38"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="37"/>
+            <to idref="41"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="38"/>
+            <to idref="39"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="39"/>
+            <to idref="40"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="41"/>
+            <to idref="42"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="42"/>
+            <to idref="43"/>
+          </object>
+        </edges>
+      </object>
+      <object class="End" id="45"/>
+      <object class="SnippetStep" id="46">
+        <name>
+          <null/>
+        </name>
+        <snippetName class="String">EHLoginFailed</snippetName>
+        <snippetStepComment>
+          <null/>
+        </snippetStepComment>
+      </object>
+      <object class="End" id="47"/>
+      <object class="Transition" serializationversion="3" id="48">
+        <property name="name" class="String">Remove Cookie</property>
+        <property name="stepAction" class="RemoveCookie" serializationversion="0"/>
+        <property name="elementFinders" class="ElementFinders"/>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+          <property name="changedProperties" class="java.util.HashSet">
+            <element idref="6"/>
+          </property>
+          <property name="reportingViaAPI" class="Boolean">false</property>
+          <property name="reportingViaLog" class="Boolean">false</property>
+          <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$IgnoreAndContinue"/>
+        </property>
+        <property name="comment">
+          <null/>
+        </property>
+        <property name="enabled" idref="9"/>
+        <property name="changedProperties" class="java.util.HashSet"/>
+      </object>
+      <object class="Transition" serializationversion="3" id="49">
+        <property name="name" idref="8"/>
+        <property name="stepAction" class="LoadPage2">
+          <property name="urlProvider" class="kapow.robot.plugin.common.stepaction.urlprovider2.AttributeURLProvider2" serializationversion="1">
+            <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+              <property name="name" class="String">VendorCredential.accessUrl</property>
+            </property>
+          </property>
+          <property name="waitCriteria" class="WaitCriteria">
+            <object class="IdleWaitCriterion"/>
+          </property>
+          <property name="browserConfigurationSpecification" class="BrowserConfigurationSpecificationWebKit" serializationversion="26">
+            <property name="httpUserAgent" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+              <property name="value" class="String">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36</property>
+            </property>
+            <property name="timeout" class="Double">120.0</property>
+            <property name="ignoreLoadErrors" class="Boolean">true</property>
+            <property name="loadImages" class="kapow.robot.plugin.common.support.predicate.unary.url.AllURLPredicate"/>
+            <property name="sourceCorrections" class="DataConverters">
+              <element class="ReplaceText">
+                <property name="textToReplace" class="String">let </property>
+                <property name="replacementText" class="String">var </property>
+              </element>
+            </property>
+            <property name="ancestorProvider" class="BrowserConfigurationSpecificationAncestorProviderForStep"/>
+            <property name="changedProperties" class="java.util.HashSet">
+              <element class="String">ignoreLoadErrors</element>
+              <element class="String">loadImages</element>
+              <element class="String">SSLUsage</element>
+            </property>
+          </property>
+        </property>
+        <property name="elementFinders" class="ElementFinders"/>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+          <property name="changedProperties" class="java.util.HashSet">
+            <element class="String">reportingViaLog</element>
+          </property>
+          <property name="reportingViaAPI" class="Boolean">false</property>
+          <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+            <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+              <property name="name" class="String">Vendor portal load?</property>
+            </property>
+          </property>
+        </property>
+        <property name="comment">
+          <null/>
+        </property>
+        <property name="enabled" idref="9"/>
+        <property name="changedProperties" class="java.util.HashSet"/>
+      </object>
+      <object class="SnippetStep" id="50">
+        <name>
+          <null/>
+        </name>
+        <snippetName class="String">EHVendorPortal</snippetName>
+        <snippetStepComment>
+          <null/>
+        </snippetStepComment>
+      </object>
+      <object class="End" id="51"/>
+    </steps>
+    <blockEndStep class="BlockEndStep" id="52"/>
+    <edges class="ArrayList">
+      <object class="TransitionEdge">
+        <from idref="0"/>
+        <to idref="1"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="1"/>
+        <to idref="5"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="1"/>
+        <to idref="50"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="5"/>
+        <to idref="7"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="5"/>
+        <to idref="48"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="7"/>
+        <to idref="10"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="10"/>
+        <to idref="12"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="12"/>
+        <to idref="13"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="13"/>
+        <to idref="14"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="14"/>
+        <to idref="15"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="15"/>
+        <to idref="16"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="16"/>
+        <to idref="17"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="16"/>
+        <to idref="22"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="17"/>
+        <to idref="18"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="18"/>
+        <to idref="21"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="21"/>
+        <to idref="52"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="22"/>
+        <to idref="23"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="22"/>
+        <to idref="46"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="23"/>
+        <to idref="45"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="46"/>
+        <to idref="47"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="48"/>
+        <to idref="49"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="49"/>
+        <to idref="10"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="50"/>
+        <to idref="51"/>
+      </object>
+    </edges>
+  </body>
+</object>

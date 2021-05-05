@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<object class="Snippet" serializationversion="0">
+  <prologue>
+    <saved-by-versions>
+      <version>10.3.1.0</version>
+      <version>11.0.0.0</version>
+    </saved-by-versions>
+    <file-type>snippet</file-type>
+    <referenced-types>
+      <type name="CallAndResponse"/>
+    </referenced-types>
+    <triggers/>
+    <sub-robots/>
+    <device-mappings/>
+    <comment/>
+    <tags/>
+    <referenced-snippets>
+      <snippet name="EHUploadFailed"/>
+    </referenced-snippets>
+    <typed-variables>
+      <typed-variable name="PostUploadFile" type-name="CallAndResponse"/>
+    </typed-variables>
+    <global-variables/>
+    <parameters/>
+    <return-variables/>
+    <store-in-database-variables/>
+    <browser-engine>WEBKIT</browser-engine>
+  </prologue>
+  <property name="variables" class="Variables">
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">PostUploadFile</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">CallAndResponse</property>
+        </property>
+        <property name="assignments" class="AttributeAssignments">
+          <property name="apiUrl" class="AttributeAssignment">
+            <property name="attributeValue" class="String">enterprise/api/files/</property>
+            <property name="currentlyAssigned" class="Boolean">true</property>
+            <property name="lastKnownAttributeType" class="java.lang.Class">kapow.robot.plugin.common.domain.StringAttributeType</property>
+          </property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">currentInvoiceDate</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="SimpleTypeReference" id="0">
+          <property name="simpleTypeId" class="Integer">12</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">lastSentHeaders</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="SimpleTypeReference">
+          <property name="simpleTypeId" class="Integer">13</property>
+        </property>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">lastSentStatus</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" idref="0"/>
+      </property>
+    </object>
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">pdfDownloadedFile</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="SimpleTypeReference">
+          <property name="simpleTypeId" class="Integer">8</property>
+        </property>
+      </property>
+    </object>
+  </property>
+  <comment class="String">For use when uploading PDF files to the Automation Api. These files eventually make it into the OIR process. </comment>
+  <body class="Body">
+    <blockBeginStep class="BlockBeginStep" id="1"/>
+    <steps class="ArrayList">
+      <object class="Group" id="2">
+        <name class="String">Actual Upload</name>
+        <comment>
+          <null/>
+        </comment>
+        <blockBeginStep class="BlockBeginStep" id="3"/>
+        <steps class="ArrayList">
+          <object class="Try" id="4">
+            <property name="name" class="String" id="5">Upload Fail?</property>
+          </object>
+          <object class="Transition" serializationversion="3" id="6">
+            <property name="name" class="String" id="7">Test Value</property>
+            <property name="stepAction" class="TestValue" serializationversion="0">
+              <property name="condition" class="Expression" serializationversion="1">
+                <property name="text" class="String">length(pdfDownloadedFile) &gt; 1</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" idref="5"/>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" class="Boolean" id="8">true</property>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="Transition" serializationversion="3" id="9">
+            <property name="name" class="String" id="10">Call REST Web Service</property>
+            <property name="stepAction" class="CallRESTWebService2" serializationversion="1">
+              <property name="urlProvider" class="Expression" serializationversion="1">
+                <property name="text" class="String">PostUploadFile.apiUrl</property>
+              </property>
+              <property name="request" class="kapow.robot.plugin.common.stateprocessor.rest.PostRestRequest">
+                <property name="body" class="kapow.robot.plugin.common.stateprocessor.rest.ParameterBodyContent">
+                  <property name="parameters" class="BeanList">
+                    <object class="kapow.robot.plugin.common.stateprocessor.rest.RestFileParameter">
+                      <property name="name" class="String">file</property>
+                      <property name="value" class="kapow.robot.plugin.common.support.expression.multipletype.VariableExpression" serializationversion="2">
+                        <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                          <property name="name" class="String">pdfDownloadedFile</property>
+                        </property>
+                      </property>
+                      <property name="fileName" class="kapow.robot.plugin.common.support.expression.multipletype.VariableExpression" serializationversion="2">
+                        <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                          <property name="name" class="String">Invoice.fileName</property>
+                        </property>
+                      </property>
+                      <property name="contentType" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression"/>
+                    </object>
+                    <object class="kapow.robot.plugin.common.stateprocessor.rest.RestParameter">
+                      <property name="name" class="String">entityId</property>
+                      <property name="value" class="kapow.robot.plugin.common.support.expression.multipletype.VariableExpression" serializationversion="2">
+                        <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                          <property name="name" class="String">Invoice.id</property>
+                        </property>
+                      </property>
+                    </object>
+                    <object class="kapow.robot.plugin.common.stateprocessor.rest.RestParameter">
+                      <property name="name" class="String">entityType</property>
+                      <property name="value" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                        <property name="value" class="String">Invoice</property>
+                      </property>
+                    </object>
+                    <object class="kapow.robot.plugin.common.stateprocessor.rest.RestParameter">
+                      <property name="name" class="String">vendorId</property>
+                      <property name="value" class="kapow.robot.plugin.common.support.expression.multipletype.VariableExpression" serializationversion="2">
+                        <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                          <property name="name" class="String">Vendor.id</property>
+                        </property>
+                      </property>
+                    </object>
+                  </property>
+                  <property name="parameterEncoding" class="kapow.robot.plugin.common.stateprocessor.rest.ParameterBodyContent$ParameterEncoding" id="11">
+                    <property name="enum-name" class="String">MULTIPART</property>
+                  </property>
+                </property>
+              </property>
+              <property name="output" class="kapow.robot.plugin.common.stateprocessor.rest.ToBrowserStateOutputSpecification"/>
+              <property name="browserConfigurationSpecification" class="BrowserConfigurationSpecificationWebKit" serializationversion="26">
+                <property name="responseStatusCodeAttributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                  <property name="name" class="String">lastSentStatus</property>
+                </property>
+                <property name="responseHeadersAttributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                  <property name="name" class="String">lastSentHeaders</property>
+                </property>
+                <property name="ancestorProvider" class="BrowserConfigurationSpecificationAncestorProviderForStep"/>
+                <property name="changedProperties" class="java.util.HashSet">
+                  <element class="String">responseHeadersAttributeName</element>
+                  <element class="String">responseStatusCodeAttributeName</element>
+                  <element class="String">SSLUsage</element>
+                </property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" idref="5"/>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="8"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="Transition" serializationversion="3" id="12">
+            <property name="name" idref="7"/>
+            <property name="stepAction" class="TestValue" serializationversion="0">
+              <property name="condition" class="Expression" serializationversion="1">
+                <property name="text" class="String">contains(lastSentStatus, 200)</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="reportingViaLog" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" idref="5"/>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="8"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="SnippetStep" id="13">
+            <name>
+              <null/>
+            </name>
+            <snippetName class="String">EHUploadFailed</snippetName>
+            <snippetStepComment>
+              <null/>
+            </snippetStepComment>
+          </object>
+          <object class="End" id="14"/>
+        </steps>
+        <blockEndStep class="BlockEndStep" id="15"/>
+        <edges class="ArrayList">
+          <object class="TransitionEdge">
+            <from idref="3"/>
+            <to idref="4"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="4"/>
+            <to idref="6"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="4"/>
+            <to idref="13"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="6"/>
+            <to idref="9"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="9"/>
+            <to idref="12"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="12"/>
+            <to idref="15"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="13"/>
+            <to idref="14"/>
+          </object>
+        </edges>
+      </object>
+      <object class="Group" id="16">
+        <name class="String">UAT upload</name>
+        <comment>
+          <null/>
+        </comment>
+        <blockBeginStep class="BlockBeginStep" id="17"/>
+        <steps class="ArrayList">
+          <object class="Try" id="18">
+            <property name="name" class="String" id="19">Upload Fail?</property>
+          </object>
+          <object class="Transition" serializationversion="3" id="20">
+            <property name="name" idref="10"/>
+            <property name="stepAction" class="CallRESTWebService2" serializationversion="1">
+              <property name="urlProvider" class="Expression" serializationversion="1">
+                <property name="text" class="String">PostUploadFile.apiUrl</property>
+              </property>
+              <property name="request" class="kapow.robot.plugin.common.stateprocessor.rest.PostRestRequest">
+                <property name="body" class="kapow.robot.plugin.common.stateprocessor.rest.ParameterBodyContent">
+                  <property name="parameters" class="BeanList">
+                    <object class="kapow.robot.plugin.common.stateprocessor.rest.RestFileParameter">
+                      <property name="name" class="String">file</property>
+                      <property name="value" class="kapow.robot.plugin.common.support.expression.multipletype.VariableExpression" serializationversion="2">
+                        <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                          <property name="name" class="String">pdfDownloadedFile</property>
+                        </property>
+                      </property>
+                      <property name="fileName" class="kapow.robot.plugin.common.support.expression.multipletype.VariableExpression" serializationversion="2">
+                        <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                          <property name="name" class="String">Invoice.fileName</property>
+                        </property>
+                      </property>
+                      <property name="contentType" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression"/>
+                    </object>
+                    <object class="kapow.robot.plugin.common.stateprocessor.rest.RestParameter">
+                      <property name="name" class="String">overrideDataDirectory</property>
+                      <property name="value" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                        <property name="value" class="String">fidouat</property>
+                      </property>
+                    </object>
+                    <object class="kapow.robot.plugin.common.stateprocessor.rest.RestParameter">
+                      <property name="name" class="String">entityId</property>
+                      <property name="value" class="kapow.robot.plugin.common.support.expression.multipletype.VariableExpression" serializationversion="2">
+                        <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                          <property name="name" class="String">Invoice.id</property>
+                        </property>
+                      </property>
+                    </object>
+                    <object class="kapow.robot.plugin.common.stateprocessor.rest.RestParameter">
+                      <property name="name" class="String">entityType</property>
+                      <property name="value" class="kapow.robot.plugin.common.support.expression.stringexpr.ValueStringExpression">
+                        <property name="value" class="String">Invoice</property>
+                      </property>
+                    </object>
+                    <object class="kapow.robot.plugin.common.stateprocessor.rest.RestParameter">
+                      <property name="name" class="String">vendorId</property>
+                      <property name="value" class="kapow.robot.plugin.common.support.expression.multipletype.VariableExpression" serializationversion="2">
+                        <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                          <property name="name" class="String">Vendor.id</property>
+                        </property>
+                      </property>
+                    </object>
+                  </property>
+                  <property name="parameterEncoding" idref="11"/>
+                </property>
+              </property>
+              <property name="output" class="kapow.robot.plugin.common.stateprocessor.rest.ToBrowserStateOutputSpecification"/>
+              <property name="browserConfigurationSpecification" class="BrowserConfigurationSpecificationWebKit" serializationversion="26">
+                <property name="responseStatusCodeAttributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                  <property name="name" class="String">lastSentStatus</property>
+                </property>
+                <property name="responseHeadersAttributeName" class="kapow.robot.plugin.common.support.AttributeName2">
+                  <property name="name" class="String">lastSentHeaders</property>
+                </property>
+                <property name="ancestorProvider" class="BrowserConfigurationSpecificationAncestorProviderForStep"/>
+                <property name="changedProperties" class="java.util.HashSet">
+                  <element class="String">responseHeadersAttributeName</element>
+                  <element class="String">responseStatusCodeAttributeName</element>
+                  <element class="String">SSLUsage</element>
+                </property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+                <element class="String">reportingViaLog</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" idref="19"/>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="8"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="Transition" serializationversion="3" id="21">
+            <property name="name" idref="7"/>
+            <property name="stepAction" class="TestValue" serializationversion="0">
+              <property name="condition" class="Expression" serializationversion="1">
+                <property name="text" class="String">contains(lastSentStatus, 200)</property>
+              </property>
+            </property>
+            <property name="elementFinders" class="ElementFinders"/>
+            <property name="errorHandler" class="ErrorHandler" serializationversion="0">
+              <property name="changedProperties" class="java.util.HashSet">
+                <element class="String">reportingViaAPI</element>
+              </property>
+              <property name="reportingViaAPI" class="Boolean">false</property>
+              <property name="reportingViaLog" class="Boolean">false</property>
+              <property name="controlFlow" class="kapow.robot.robomaker.robot.ControlFlow$NextAlternative">
+                <property name="targetStepSelector" class="kapow.robot.robomaker.robot.ControlFlow$TargetStepSelector">
+                  <property name="name" idref="19"/>
+                </property>
+              </property>
+            </property>
+            <property name="comment">
+              <null/>
+            </property>
+            <property name="enabled" idref="8"/>
+            <property name="changedProperties" class="java.util.HashSet"/>
+          </object>
+          <object class="SnippetStep" id="22">
+            <name>
+              <null/>
+            </name>
+            <snippetName class="String">EHUploadFailed</snippetName>
+            <snippetStepComment>
+              <null/>
+            </snippetStepComment>
+          </object>
+          <object class="End" id="23"/>
+        </steps>
+        <blockEndStep class="BlockEndStep" id="24"/>
+        <edges class="ArrayList">
+          <object class="TransitionEdge">
+            <from idref="17"/>
+            <to idref="18"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="18"/>
+            <to idref="20"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="18"/>
+            <to idref="22"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="20"/>
+            <to idref="21"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="21"/>
+            <to idref="24"/>
+          </object>
+          <object class="TransitionEdge">
+            <from idref="22"/>
+            <to idref="23"/>
+          </object>
+        </edges>
+      </object>
+    </steps>
+    <blockEndStep class="BlockEndStep" id="25"/>
+    <edges class="ArrayList">
+      <object class="TransitionEdge">
+        <from idref="1"/>
+        <to idref="2"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="2"/>
+        <to idref="16"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="16"/>
+        <to idref="25"/>
+      </object>
+    </edges>
+  </body>
+</object>
